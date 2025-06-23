@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Base foundation created to launch blank window - ready for GUI styling and design">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Styles/TopMenu.css" afterDir="false" />
+    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Stitched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopPanelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/WeatherPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/WeatherPanel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/icon.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,12 +158,30 @@
       <option name="project" value="LOCAL" />
       <updated>1750698077016</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Stiched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides">
+      <option name="closed" value="true" />
+      <created>1750705878358</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1750705878358</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Stitched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides">
+      <option name="closed" value="true" />
+      <created>1750705894435</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1750705894435</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project initializing and structure set" />
     <MESSAGE value="Base foundation created to launch blank window - ready for GUI styling and design" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base foundation created to launch blank window - ready for GUI styling and design" />
+    <MESSAGE value="Stiched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides" />
+    <MESSAGE value="Stitched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stitched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides" />
   </component>
 </project>
