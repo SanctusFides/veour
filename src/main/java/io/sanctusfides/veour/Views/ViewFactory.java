@@ -1,6 +1,7 @@
 package io.sanctusfides.veour.Views;
 
 import io.sanctusfides.veour.Controllers.WindowController;
+import io.sanctusfides.veour.Models.APIDriver;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -8,16 +9,17 @@ import javafx.stage.Stage;
 
 public class ViewFactory {
 
+    private final APIDriver apiDriver;
 
     public ViewFactory() {
-
-
+        this.apiDriver = new APIDriver();
     }
     // Main window container for the app that opens on launch and houses the center and top panels
     public void showWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Window.fxml"));
         WindowController controller = new WindowController();
         loader.setController(controller);
+        apiDriver.printWeather();
         createStage(loader);
     }
 

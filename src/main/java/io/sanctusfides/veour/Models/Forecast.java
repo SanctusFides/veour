@@ -2,41 +2,39 @@ package io.sanctusfides.veour.Models;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.StringProperty;
 
 public class Forecast {
-    private StringProperty selectedTempUnit;
     private final DoubleProperty temp;
     private final DoubleProperty high;
     private final DoubleProperty low;
     private final DoubleProperty feelsLikeTemp;
-    private final DoubleProperty humidty;
+    private final DoubleProperty humidity;
     private final DoubleProperty precipitation;
     private final DoubleProperty windSpeed;
     private final DoubleProperty windDirection;
 
-    public Forecast(double temp, double high, double low, double feelsLikeTemp, double humidty, double precipitation,
+    public Forecast(double temp, double high, double low, double feelsLikeTemp, double humidity, double precipitation,
                     double windSpeed, double windDirection) {
+        /**
+        Not sure if I need these here to have a third value, I'm not using a database to need these to have name values for the bean
         this.temp = new SimpleDoubleProperty(this, "Temperature", temp);
         this.high = new SimpleDoubleProperty(this, "High", high);
         this.low = new SimpleDoubleProperty(this, "Low", low);
         this.feelsLikeTemp = new SimpleDoubleProperty(this, "FeelsLikeTemperature", feelsLikeTemp);
-        this.humidty = new SimpleDoubleProperty(this, "Humidity", humidty);
+        this.humidity = new SimpleDoubleProperty(this, "Humidity", humidity);
         this.precipitation = new SimpleDoubleProperty(this, "Precipitation", precipitation);
         this.windSpeed = new SimpleDoubleProperty(this, "WindSpeed", windSpeed);
         this.windDirection = new SimpleDoubleProperty(this, "WindDirection", windDirection);
-    }
+        * */
 
-    public String getSelectedTempUnit() {
-        return selectedTempUnit.get();
-    }
-
-    public StringProperty selectedTempUnitProperty() {
-        return selectedTempUnit;
-    }
-
-    public void setSelectedTempUnit(String selectedTempUnit) {
-        this.selectedTempUnit.set(selectedTempUnit);
+        this.temp = new SimpleDoubleProperty(temp);
+        this.high = new SimpleDoubleProperty(high);
+        this.low = new SimpleDoubleProperty(low);
+        this.feelsLikeTemp = new SimpleDoubleProperty(feelsLikeTemp);
+        this.humidity = new SimpleDoubleProperty(humidity);
+        this.precipitation = new SimpleDoubleProperty(precipitation);
+        this.windSpeed = new SimpleDoubleProperty(windSpeed);
+        this.windDirection = new SimpleDoubleProperty(windDirection);
     }
 
     public double getTemp() {
@@ -71,12 +69,12 @@ public class Forecast {
         return feelsLikeTemp;
     }
 
-    public double getHumidty() {
-        return humidty.get();
+    public double getHumidity() {
+        return humidity.get();
     }
 
-    public DoubleProperty humidtyProperty() {
-        return humidty;
+    public DoubleProperty humidityProperty() {
+        return humidity;
     }
 
     public double getPrecipitation() {
