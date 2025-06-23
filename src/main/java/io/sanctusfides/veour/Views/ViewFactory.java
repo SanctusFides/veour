@@ -33,6 +33,7 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/Images/icon.png"))));
         stage.setTitle("Veour Forecast");
+        stage.setResizable(false);
         stage.show();
     }
 }

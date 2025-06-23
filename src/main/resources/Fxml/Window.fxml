@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml">
+<BorderPane prefHeight="700.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <top>
-        <fx:include source="TopPanel.fxml"/>
+        <fx:include source="TopPanel.fxml" />
     </top>
 
     <center>
-        <fx:include source="WeatherPanel.fxml"/>
+        <fx:include source="WeatherPanel.fxml" />
     </center>
 
     <bottom>
-
+        <fx:include source="BottomPanel.fxml" />
     </bottom>
 
 </BorderPane>
