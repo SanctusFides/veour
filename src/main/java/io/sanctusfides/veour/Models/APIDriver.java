@@ -15,33 +15,45 @@ public class APIDriver {
 
     public APIDriver(){
         try {
-            this.testURL = new URI("https://api.open-meteo.com/v1/forecast?latitude=29.7633&longitude=-95.3633&current=" +
-                    "temperature_2m,precipitation,relative_humidity_2m,apparent_temperature,weather_code,rain,cloud_cover," +
-                    "showers,wind_speed_10m,wind_direction_10m&wind_speed_unit=mph&temperature_unit=fahrenheit" +
-                    "&precipitation_unit=inch");
+            this.testURL = new URI("https://api.open-meteo.com/v1/forecast?latitude=29.7633&longitude=-95.3633&daily" +
+                    "=temperature_2m_max,temperature_2m_min,rain_sum,showers_sum&current=temperature_2m,precipitation" +
+                    ",relative_humidity_2m,apparent_temperature&timezone=America%2FChicago&forecast_days=1&" +
+                    "wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
-    public void printWeather() {
+    public HttpResponse<String> getHoustonWeather() {
+        HttpResponse<String> request = null;
         try {
-            getHoustonWeather(testURL);
-        } catch (InterruptedException | IOException e2) {
-            e2.printStackTrace();
+            request = getWeather(testURL);
+        } catch (InterruptedException | IOException e) {
+            e.printStackTrace();
         }
+        return request;
     }
 
-    public HttpRequest getHoustonWeather(URI url) throws IOException, InterruptedException {
+//    This is commented out to work on one that will return the weather formatted in JSON instead
+//    public HttpResponse<String> getWeather(URI url) throws IOException, InterruptedException {
+//        HttpRequest request = HttpRequest.newBuilder()
+//                .uri(url)
+//                .timeout(Duration.of(10, ChronoUnit.SECONDS))
+//                .GET()
+//                .build();
+//        HttpClient client = HttpClient.newHttpClient();
+//        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+//        return response;
+//    }
+
+    public HttpResponse<String> getWeather(URI url) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
                 .timeout(Duration.of(10, ChronoUnit.SECONDS))
                 .GET()
                 .build();
         HttpClient client = HttpClient.newHttpClient();
-
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
-        return request;
+        return response;
     }
 }

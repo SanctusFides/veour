@@ -1,0 +1,27 @@
+.forecast_container {
+    -fx-alignment: top_center
+}
+
+.day_lbl {
+    -fx-padding: 15 0 15 0;
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+}
+
+.temp_lbl {
+        -fx-padding: 15 0 15 0;
+        -fx-font-size: 3.2em;
+        -fx-font-weight: bold;
+}
+
+.weather_box {
+   -fx-padding: 20 0 0 10;
+}
+
+HBox {
+    -fx-spacing: 5;
+}
+
+HBox Label {
+    -fx-font-weight: bold;
+}
