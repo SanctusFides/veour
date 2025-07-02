@@ -1,6 +1,11 @@
 package io.sanctusfides.veour.Models;
 
-import java.io.IOException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -9,11 +14,14 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
+
 public class APIDriver {
 
     URI testURL;
+    ObjectMapper mapper;
 
     public APIDriver(){
+        // Creating a test url temporarily to work on formatting
         try {
             this.testURL = new URI("https://api.open-meteo.com/v1/forecast?latitude=29.7633&longitude=-95.3633&daily" +
                     "=temperature_2m_max,temperature_2m_min,rain_sum,showers_sum&current=temperature_2m,precipitation" +
@@ -22,31 +30,12 @@ public class APIDriver {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+
+        this.mapper = new ObjectMapper();
     }
 
-    public HttpResponse<String> getHoustonWeather() {
-        HttpResponse<String> request = null;
-        try {
-            request = getWeather(testURL);
-        } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
-        return request;
-    }
-
-//    This is commented out to work on one that will return the weather formatted in JSON instead
-//    public HttpResponse<String> getWeather(URI url) throws IOException, InterruptedException {
-//        HttpRequest request = HttpRequest.newBuilder()
-//                .uri(url)
-//                .timeout(Duration.of(10, ChronoUnit.SECONDS))
-//                .GET()
-//                .build();
-//        HttpClient client = HttpClient.newHttpClient();
-//        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-//        return response;
-//    }
-
-    public HttpResponse<String> getWeather(URI url) throws IOException, InterruptedException {
+// Makes the network request to the API url and passes along the response to be converted into JSON for parsing
+    private HttpResponse<String> requestWeather(URI url) throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
                 .timeout(Duration.of(10, ChronoUnit.SECONDS))
@@ -55,5 +44,50 @@ public class APIDriver {
         HttpClient client = HttpClient.newHttpClient();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response;
+    }
+
+// Takes network response and converts it into a json to use get methods on
+    private Object convertHttpToJson(HttpResponse<String> response) throws ParseException {
+        JSONParser parser = new JSONParser();
+        return parser.parse(response.body());
+    }
+
+// Takes the JSON and a string and retrieves the requested parent section from the JSON - needed for nested sections
+    private JsonNode mapToJsonNodes(Object weather,String jsonParent) throws JsonProcessingException {
+        JsonNode node = mapper.readTree(String.valueOf(weather));
+        return node.get(jsonParent);
+    }
+
+// Now that the request has been parsed for the relevant sections, the values are retrieved and returned attached to model
+    private Forecast convertJsonToForecast(Object weather) throws JsonProcessingException {
+        JsonNode currentNode = mapToJsonNodes(weather, "current");
+        JsonNode dailyNode = mapToJsonNodes(weather,"daily");
+        return buildForecast(currentNode,dailyNode);
+    }
+
+// Handles the actual building of forecast - adhering to the single responsibility principal
+    private Forecast buildForecast(JsonNode currentNode, JsonNode dailyNode) {
+        Forecast forecast = new Forecast();
+        forecast.setTemp(currentNode.get("temperature_2m").asDouble());
+        forecast.setHigh(dailyNode.get("temperature_2m_max").get(0).asDouble());
+        forecast.setLow(dailyNode.get("temperature_2m_min").get(0).asDouble());
+        forecast.setFeelsLikeTemp(currentNode.get("apparent_temperature").asDouble());
+        forecast.setHumidity(currentNode.get("relative_humidity_2m").asDouble());
+        forecast.setWindSpeed(0.0);
+        forecast.setWindDirection(0.0);
+        return forecast;
+    }
+
+// Used just for fetching the static URL for testing
+    public Forecast getHoustonWeather() throws ParseException, JsonProcessingException {
+        HttpResponse<String> request = null;
+        try {
+            request = requestWeather(testURL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assert request != null;
+        Object weatherJSON = convertHttpToJson(request);
+        return convertJsonToForecast(weatherJSON);
     }
 }

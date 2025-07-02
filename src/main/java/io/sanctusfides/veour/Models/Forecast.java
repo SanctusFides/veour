@@ -5,52 +5,18 @@ import javafx.beans.property.SimpleDoubleProperty;
 
 public class Forecast {
 
-    private DoubleProperty temp;
-    private DoubleProperty high;
-    private DoubleProperty low;
-    private DoubleProperty feelsLikeTemp;
-    private DoubleProperty humidity;
-    private DoubleProperty precipitation;
+    private double temp;
+    private double high;
+    private double low;
+    private double feelsLikeTemp;
+    private double humidity;
+    private double precipitation;
 
-    public void setTemp(double temp) {
-        this.temp.set(temp);
-    }
+    private double windSpeed;
+    private double windDirection;
 
-    public void setHigh(double high) {
-        this.high.set(high);
-    }
-
-    public void setLow(double low) {
-        this.low.set(low);
-    }
-
-    public void setFeelsLikeTemp(double feelsLikeTemp) {
-        this.feelsLikeTemp.set(feelsLikeTemp);
-    }
-
-    public void setHumidity(double humidity) {
-        this.humidity.set(humidity);
-    }
-
-    public void setPrecipitation(double precipitation) {
-        this.precipitation.set(precipitation);
-    }
-
-    public void setWindSpeed(double windSpeed) {
-        this.windSpeed.set(windSpeed);
-    }
-
-    public void setWindDirection(double windDirection) {
-        this.windDirection.set(windDirection);
-    }
-
-    private DoubleProperty windSpeed;
-    private DoubleProperty windDirection;
-
-    public Forecast() {};
-
-    public Forecast(double temp, double high, double low, double feelsLikeTemp, double humidity, double precipitation,
-                    double windSpeed, double windDirection) {
+//    public Forecast(double temp, double high, double low, double feelsLikeTemp, double humidity, double precipitation,
+//                    double windSpeed, double windDirection) {
         /**
         Not sure if I need these here to have a third value, I'm not using a database to need these to have name values for the bean
         this.temp = new SimpleDoubleProperty(this, "Temperature", temp);
@@ -62,80 +28,93 @@ public class Forecast {
         this.windSpeed = new SimpleDoubleProperty(this, "WindSpeed", windSpeed);
         this.windDirection = new SimpleDoubleProperty(this, "WindDirection", windDirection);
         * */
-        this.temp = new SimpleDoubleProperty(temp);
-        this.high = new SimpleDoubleProperty(high);
-        this.low = new SimpleDoubleProperty(low);
-        this.feelsLikeTemp = new SimpleDoubleProperty(feelsLikeTemp);
-        this.humidity = new SimpleDoubleProperty(humidity);
-        this.precipitation = new SimpleDoubleProperty(precipitation);
-        this.windSpeed = new SimpleDoubleProperty(windSpeed);
-        this.windDirection = new SimpleDoubleProperty(windDirection);
-    }
+//        this.temp = new SimpleDoubleProperty(temp);
+//        this.high = new SimpleDoubleProperty(high);
+//        this.low = new SimpleDoubleProperty(low);
+//        this.feelsLikeTemp = new SimpleDoubleProperty(feelsLikeTemp);
+//        this.humidity = new SimpleDoubleProperty(humidity);
+//        this.precipitation = new SimpleDoubleProperty(precipitation);
+//        this.windSpeed = new SimpleDoubleProperty(windSpeed);
+//        this.windDirection = new SimpleDoubleProperty(windDirection);
+//    }
+
+    public Forecast() {}
 
     public double getTemp() {
-        return temp.get();
-    }
-
-    public DoubleProperty tempProperty() {
         return temp;
     }
 
-    public double getHigh() {
-        return high.get();
+    public void setTemp(double temp) {
+        this.temp = temp;
     }
 
-    public DoubleProperty highProperty() {
+    public double getHigh() {
         return high;
     }
 
-    public double getLow() {
-        return low.get();
+    public void setHigh(double high) {
+        this.high = high;
     }
 
-    public DoubleProperty lowProperty() {
+    public double getLow() {
         return low;
     }
 
-    public double getFeelsLikeTemp() {
-        return feelsLikeTemp.get();
+    public void setLow(double low) {
+        this.low = low;
     }
 
-    public DoubleProperty feelsLikeTempProperty() {
+    public double getFeelsLikeTemp() {
         return feelsLikeTemp;
     }
 
-    public double getHumidity() {
-        return humidity.get();
+    public void setFeelsLikeTemp(double feelsLikeTemp) {
+        this.feelsLikeTemp = feelsLikeTemp;
     }
 
-    public DoubleProperty humidityProperty() {
+    public double getHumidity() {
         return humidity;
     }
 
-    public double getPrecipitation() {
-        return precipitation.get();
+    public void setHumidity(double humidity) {
+        this.humidity = humidity;
     }
 
-    public DoubleProperty precipitationProperty() {
+    public double getPrecipitation() {
         return precipitation;
     }
 
-    public double getWindSpeed() {
-        return windSpeed.get();
+    public void setPrecipitation(double precipitation) {
+        this.precipitation = precipitation;
     }
 
-    public DoubleProperty windSpeedProperty() {
+    public double getWindSpeed() {
         return windSpeed;
     }
 
-    public double getWindDirection() {
-        return windDirection.get();
+    public void setWindSpeed(double windSpeed) {
+        this.windSpeed = windSpeed;
     }
 
-    public DoubleProperty windDirectionProperty() {
+    public double getWindDirection() {
         return windDirection;
     }
 
+    public void setWindDirection(double windDirection) {
+        this.windDirection = windDirection;
+    }
 
-
+    @Override
+    public String toString() {
+        return "Forecast{" +
+                "temp=" + temp +
+                ", high=" + high +
+                ", low=" + low +
+                ", feelsLikeTemp=" + feelsLikeTemp +
+                ", humidity=" + humidity +
+                ", precipitation=" + precipitation +
+                ", windSpeed=" + windSpeed +
+                ", windDirection=" + windDirection +
+                '}';
+    }
 }

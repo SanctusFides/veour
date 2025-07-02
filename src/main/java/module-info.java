@@ -5,6 +5,9 @@ module io.sanctusfides.veour {
     requires org.controlsfx.controls;
     requires java.desktop;
     requires java.net.http;
+    requires jdk.jsobject;
+    requires json.simple;
+    requires com.fasterxml.jackson.databind;
 
     opens io.sanctusfides.veour to javafx.fxml;
     exports io.sanctusfides.veour;
