@@ -14,8 +14,6 @@ public class ForecastCellFactory{
     }
 
     public void buildForecastElement(VBox cell, Forecast forecast) {
-//        System.out.println(cell.getChildren());
-//        System.out.println(forecast);
 
         Label dayLbl = (Label) cell.getChildren().get(0);
         dayLbl.setText(forecast.getDayNameString());
@@ -54,7 +52,6 @@ public class ForecastCellFactory{
         Label windLbl = (Label) windBox.getChildren().get(1);
         windLbl.setText("TBD");
 
-//      TODO - CREATE A CONSTANTS FILE FOR DAY, WEEK, 2 WEEKS, ETC
 
 //        Label highLbl = (Label) cell.getChildren()
 

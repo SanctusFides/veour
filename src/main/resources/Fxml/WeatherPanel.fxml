@@ -3,12 +3,6 @@
 <?import javafx.scene.layout.HBox?>
 
 
-<HBox fx:id="weather_panel_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="980.0" style="-fx-background-color: #99CCFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.sanctusfides.veour.Controllers.WindowController">
-<!--    <fx:include source="ForecastCell.fxml" fx:id="day1" />-->
-<!--    <fx:include source="ForecastCell.fxml" fx:id="day2" />-->
-<!--    <fx:include source="ForecastCell.fxml" fx:id="day3" />-->
-<!--    <fx:include source="ForecastCell.fxml" fx:id="day4" />-->
-<!--    <fx:include source="ForecastCell.fxml" fx:id="day5" />-->
-<!--    <fx:include source="ForecastCell.fxml" fx:id="day6" />-->
-<!--    <fx:include source="ForecastCell.fxml" fx:id="day7" />-->
+<HBox fx:id="weather_panel_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="980.0" style="-fx-background-color: #99CCFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="io.sanctusfides.veour.Controllers.WindowController">
 </HBox>

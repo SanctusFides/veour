@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.HBox?>
 
 <AnchorPane prefHeight="100.0" prefWidth="980.0" styleClass="top_menu_container" stylesheets="@../Styles/TopMenu.css"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            >
    <HBox alignment="CENTER" layoutX="215.0" layoutY="1.0" prefHeight="100.0" prefWidth="517.0">
       <Label fx:id="search_lbl" text="Enter Your Location" />
       <TextField fx:id="search_fld" prefHeight="25.0" prefWidth="223.0" />
