@@ -1,7 +1,6 @@
 package io.sanctusfides.veour.Models;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+import java.time.LocalDateTime;
 
 public class Forecast {
 
@@ -11,32 +10,10 @@ public class Forecast {
     private double feelsLikeTemp;
     private double humidity;
     private double precipitation;
+    private String date;
 
     private double windSpeed;
     private double windDirection;
-
-//    public Forecast(double temp, double high, double low, double feelsLikeTemp, double humidity, double precipitation,
-//                    double windSpeed, double windDirection) {
-        /**
-        Not sure if I need these here to have a third value, I'm not using a database to need these to have name values for the bean
-        this.temp = new SimpleDoubleProperty(this, "Temperature", temp);
-        this.high = new SimpleDoubleProperty(this, "High", high);
-        this.low = new SimpleDoubleProperty(this, "Low", low);
-        this.feelsLikeTemp = new SimpleDoubleProperty(this, "FeelsLikeTemperature", feelsLikeTemp);
-        this.humidity = new SimpleDoubleProperty(this, "Humidity", humidity);
-        this.precipitation = new SimpleDoubleProperty(this, "Precipitation", precipitation);
-        this.windSpeed = new SimpleDoubleProperty(this, "WindSpeed", windSpeed);
-        this.windDirection = new SimpleDoubleProperty(this, "WindDirection", windDirection);
-        * */
-//        this.temp = new SimpleDoubleProperty(temp);
-//        this.high = new SimpleDoubleProperty(high);
-//        this.low = new SimpleDoubleProperty(low);
-//        this.feelsLikeTemp = new SimpleDoubleProperty(feelsLikeTemp);
-//        this.humidity = new SimpleDoubleProperty(humidity);
-//        this.precipitation = new SimpleDoubleProperty(precipitation);
-//        this.windSpeed = new SimpleDoubleProperty(windSpeed);
-//        this.windDirection = new SimpleDoubleProperty(windDirection);
-//    }
 
     public Forecast() {}
 
@@ -103,6 +80,37 @@ public class Forecast {
     public void setWindDirection(double windDirection) {
         this.windDirection = windDirection;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDayNameString() {
+        return LocalDateTime.parse(date).getDayOfWeek().toString();
+    }
+    public String getTempString() {
+        return String.valueOf(temp)+"°";
+    }
+    public String getHighTempString() {
+        return String.valueOf(high)+"°";
+    }
+    public String getLowTempString() {
+        return String.valueOf(low)+"°";
+    }
+    public String getFeelsLikeTempString() {
+        return String.valueOf(feelsLikeTemp)+"°";
+    }
+    public String getHumidityString() {
+        return String.valueOf(humidity)+"%";
+    }
+    public String getPrecipitationString() {
+        return String.valueOf(precipitation)+'"';
+    }
+
 
     @Override
     public String toString() {

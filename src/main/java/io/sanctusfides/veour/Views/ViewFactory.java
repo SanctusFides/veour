@@ -21,8 +21,6 @@ public class ViewFactory {
         createStage(loader);
     }
 
-
-
 /*
     CREATION SECTION
     this section is for methods that create Views and View elements

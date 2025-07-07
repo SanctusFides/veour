@@ -75,6 +75,7 @@ public class APIDriver {
         forecast.setHumidity(currentNode.get("relative_humidity_2m").asDouble());
         forecast.setWindSpeed(0.0);
         forecast.setWindDirection(0.0);
+        forecast.setDate(currentNode.get("time").asText());
         return forecast;
     }
 

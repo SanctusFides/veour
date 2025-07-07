@@ -37,10 +37,8 @@
          <Label fx:id="humidity_lbl" text="Label" />
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wind:" />
-            <Label fx:id="wind_lbl" text="Label" />
-         </children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wind:"/>
+         <Label fx:id="wind_lbl" text="Label"/>
       </HBox>
    </VBox>
 </VBox>
