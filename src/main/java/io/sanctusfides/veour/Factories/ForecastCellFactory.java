@@ -1,4 +1,4 @@
-package io.sanctusfides.veour.Views;
+package io.sanctusfides.veour.Factories;
 
 import io.sanctusfides.veour.Models.Forecast;
 import javafx.scene.control.Label;

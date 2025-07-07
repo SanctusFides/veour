@@ -1,6 +1,6 @@
 package io.sanctusfides.veour.Models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Forecast {
 
@@ -10,7 +10,7 @@ public class Forecast {
     private double feelsLikeTemp;
     private double humidity;
     private double precipitation;
-    private String date;
+    private LocalDate date;
 
     private double windSpeed;
     private double windDirection;
@@ -81,16 +81,16 @@ public class Forecast {
         this.windDirection = windDirection;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
     public String getDayNameString() {
-        return LocalDateTime.parse(date).getDayOfWeek().toString();
+        return date.getDayOfWeek().toString();
     }
     public String getTempString() {
         return String.valueOf(temp)+"°";

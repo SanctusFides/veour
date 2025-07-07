@@ -12,6 +12,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 
@@ -23,10 +24,7 @@ public class APIDriver {
     public APIDriver(){
         // Creating a test url temporarily to work on formatting
         try {
-            this.testURL = new URI("https://api.open-meteo.com/v1/forecast?latitude=29.7633&longitude=-95.3633&daily" +
-                    "=temperature_2m_max,temperature_2m_min,rain_sum,showers_sum&current=temperature_2m,precipitation" +
-                    ",relative_humidity_2m,apparent_temperature&timezone=America%2FChicago&forecast_days=1&" +
-                    "wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch");
+            this.testURL = new URI("https://api.open-meteo.com/v1/forecast?latitude=29.7633&longitude=-95.3633&daily=temperature_2m_max,temperature_2m_min,rain_sum,showers_sum,weather_code&current=temperature_2m,precipitation,relative_humidity_2m,apparent_temperature,weather_code,rain,showers&timezone=America%2FChicago&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -67,17 +65,32 @@ public class APIDriver {
 
 // Handles the actual building of forecast - adhering to the single responsibility principal
     private Forecast buildForecast(JsonNode currentNode, JsonNode dailyNode) {
+        int dayCount = 0;
         Forecast forecast = new Forecast();
         forecast.setTemp(currentNode.get("temperature_2m").asDouble());
-        forecast.setHigh(dailyNode.get("temperature_2m_max").get(0).asDouble());
-        forecast.setLow(dailyNode.get("temperature_2m_min").get(0).asDouble());
+        forecast.setHigh(dailyNode.get("temperature_2m_max").get(dayCount).asDouble());
+        forecast.setLow(dailyNode.get("temperature_2m_min").get(dayCount).asDouble());
         forecast.setFeelsLikeTemp(currentNode.get("apparent_temperature").asDouble());
         forecast.setHumidity(currentNode.get("relative_humidity_2m").asDouble());
         forecast.setWindSpeed(0.0);
         forecast.setWindDirection(0.0);
-        forecast.setDate(currentNode.get("time").asText());
+        forecast.setDate(LocalDate.parse(dailyNode.get("time").get(0).asText()));
         return forecast;
     }
+//    METHOD BELOW IS FOR OUR SINGLE DAY TEST, ONE ABOVE IS FOR TAKING IN DAY COUNT TO INC THROUGH LISTS WITH
+//    private Forecast buildForecast(JsonNode currentNode, JsonNode dailyNode) {
+//        Forecast forecast = new Forecast();
+//        forecast.setTemp(currentNode.get("temperature_2m").asDouble());
+//        forecast.setHigh(dailyNode.get("temperature_2m_max").get(0).asDouble());
+//        forecast.setLow(dailyNode.get("temperature_2m_min").get(0).asDouble());
+//        forecast.setFeelsLikeTemp(currentNode.get("apparent_temperature").asDouble());
+//        forecast.setHumidity(currentNode.get("relative_humidity_2m").asDouble());
+//        forecast.setWindSpeed(0.0);
+//        forecast.setWindDirection(0.0);
+//        forecast.setDate(currentNode.get("time").asText());
+//        return forecast;
+//    }
+
 
 // Used just for fetching the static URL for testing
     public Forecast getHoustonWeather() throws ParseException, JsonProcessingException {
