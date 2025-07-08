@@ -11,6 +11,10 @@ import java.util.ResourceBundle;
 public class ForecastCellController implements Initializable {
 
     @FXML
+    private Label forecast_active_status_lbl;
+    @FXML
+    private Label weather_descr_lbl;
+    @FXML
     private Label day_lbl;
     @FXML
     private ImageView weather_img;

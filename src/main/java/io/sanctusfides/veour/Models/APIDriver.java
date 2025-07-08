@@ -52,7 +52,6 @@ public class APIDriver {
         JsonNode currentNode = mapToJsonNodes(weather, "current");
         JsonNode dailyNode = mapToJsonNodes(weather,"daily");
 
-        System.out.println(dailyNode);
         JsonNode timeNode = dailyNode.get("time");
         JsonNode avgTempNode = dailyNode.get("temperature_2m_mean");
         JsonNode maxTempNode = dailyNode.get("temperature_2m_max");
@@ -61,7 +60,6 @@ public class APIDriver {
         JsonNode humidityNode = dailyNode.get("relative_humidity_2m_mean");
         JsonNode precipNode = dailyNode.get("precipitation_probability_mean");
         JsonNode weatherCodeNode = dailyNode.get("weather_code");
-
 
         return buildWeekForecast(
                 currentNode, timeNode, avgTempNode, maxTempNode, minTempNode, feelsLikeTempNode,
@@ -94,8 +92,6 @@ public class APIDriver {
             forecast.setPrecipitation(precipNode.get(i).asDouble());
             forecast.setWindSpeed(0.0);
             forecast.setWindDirection(0.0);
-
-            System.out.println(forecast.getDayNameString());
 
             week[i] = forecast;
         }

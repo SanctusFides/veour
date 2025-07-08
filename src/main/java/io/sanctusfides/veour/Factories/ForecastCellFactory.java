@@ -17,8 +17,7 @@ public class ForecastCellFactory{
 *  7:highLowFeelsLikeTempBox, 8: precipHumidWindBox
 */
 
-    public void buildForecastElement(VBox cell, Forecast forecast) {
-
+    public void buildForecastElement(VBox cell, Forecast forecast, int dayCount) {
         Label dayLbl = (Label) cell.getChildren().get(0);
         dayLbl.setText(forecast.getDayNameString());
 
@@ -29,10 +28,16 @@ public class ForecastCellFactory{
         tempLbl.setText(forecast.getTempString());
 
         Label dayStatus = (Label) cell.getChildren().get(4);
-        dayStatus.setText("Fizz");
+        if (dayCount == 0) {
+            dayStatus.setText("Current");
+        } else {
+            dayStatus.setText("Average");
+        }
+
 
         Label weatherDescription = (Label) cell.getChildren().get(5);
-        weatherDescription.setText("Buzz");
+        weatherDescription.setText(convertWeatherCode(forecast.getWeatherCode()));
+
 
         VBox highLowFeelsLikeTempBox = (VBox) cell.getChildren().get(7);
         VBox precipHumidWindBox = (VBox) cell.getChildren().get(8);
@@ -61,5 +66,32 @@ public class ForecastCellFactory{
         HBox windBox = (HBox) precipHumidWindBox.getChildren().get(2);
         Label windLbl = (Label) windBox.getChildren().get(1);
         windLbl.setText("TBD");
+    }
+
+    private String convertWeatherCode(String code) {
+        return switch (code) {
+            case "0" -> "Clear Sky";
+            case "1" -> "Mostly Clear";
+            case "2" -> "Partly Cloudy";
+            case "3" -> "Overcast";
+            case "45", "48" -> "Fog";
+            case "51", "53", "55" -> "Drizzle";
+            case "56", "57" -> "Freezing Drizzle";
+            case "61" -> "Slight Rain";
+            case "63" -> "Moderate Rain";
+            case "65" -> "Heavy Rain";
+            case "66", "67" -> "Freezing Rain";
+            case "71" -> "Slight Snow";
+            case "73" -> "Moderate Snow";
+            case "75" -> "Heavy Snow";
+            case "77" -> "Snow Grains";
+            case "80" -> "Slight Showers";
+            case "81" -> "Moderate Showers";
+            case "82" -> "Heavy Showers";
+            case "85", "86" -> "Snow Showers";
+            case "95" -> "Thunderstorms";
+            case "96", "99" -> "Hail Thunderstorms";
+            default -> "error";
+        };
     }
 }
