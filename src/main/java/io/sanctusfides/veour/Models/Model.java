@@ -23,17 +23,14 @@ public class Model {
        this.forecastCellFactory = new ForecastCellFactory();
        this.forecastCellController = new ForecastCellController();
        this.apiDriver = new APIDriver();
-       this.weeklyForecast = new Forecast[7];
 
+       this.weeklyForecast = new Forecast[7];
        loadWeather();
     }
 
     private void loadWeather() {
         try {
-            URI houstonTestURL = new URI("https://api.open-meteo.com/v1/forecast?latitude=29.7633&longitude=-95.3633" +
-                    "&daily=temperature_2m_max,temperature_2m_min,rain_sum,showers_sum,weather_code&current" +
-                    "=temperature_2m,precipitation,relative_humidity_2m,apparent_temperature,weather_code,rain,showers" +
-                    "&timezone=America%2FChicago&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch");
+            URI houstonTestURL = new URI("https://api.open-meteo.com/v1/forecast?latitude=29.7633&longitude=-95.3633&daily=temperature_2m_max,temperature_2m_min,rain_sum,showers_sum,weather_code,temperature_2m_mean,precipitation_probability_mean,relative_humidity_2m_mean,apparent_temperature_mean&current=temperature_2m,precipitation,relative_humidity_2m,apparent_temperature,weather_code,rain,showers&timezone=America%2FChicago&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch");
 
 //          Load the weeks worth of forecasts
             Forecast[] weather = apiDriver.getWeather(houstonTestURL);
@@ -56,15 +53,13 @@ public class Model {
     public Forecast[] getWeeklyForecast() {
         return weeklyForecast;
     }
-
     public Forecast getWeekDay(int dayCount) throws DayOutOfBoundsException {
         if(dayCount > 6 || dayCount < 0) {
             throw (new DayOutOfBoundsException("Day value used to retrieve forecast was not value"));
         }
         return weeklyForecast[dayCount];
     }
-
-    public void setWeekDay(int dayCount,Forecast forecast) {
+    private void setWeekDay(int dayCount,Forecast forecast) {
         weeklyForecast[dayCount] = forecast;
     }
 

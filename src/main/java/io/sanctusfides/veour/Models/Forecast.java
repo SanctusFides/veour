@@ -12,6 +12,9 @@ public class Forecast {
     private double precipitation;
     private LocalDate date;
 
+
+    private String weatherCode;
+
     private double windSpeed;
     private double windDirection;
 
@@ -89,6 +92,15 @@ public class Forecast {
         this.date = date;
     }
 
+    public String getWeatherCode() {
+        return weatherCode;
+    }
+
+    public void setWeatherCode(String weatherCode) {
+        this.weatherCode = weatherCode;
+    }
+
+
     public String getDayNameString() {
         return date.getDayOfWeek().toString();
     }
@@ -108,7 +120,7 @@ public class Forecast {
         return String.valueOf(humidity)+"%";
     }
     public String getPrecipitationString() {
-        return String.valueOf(precipitation)+'"';
+        return String.valueOf(precipitation)+'%';
     }
 
 

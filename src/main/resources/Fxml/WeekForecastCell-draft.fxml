@@ -9,60 +9,58 @@
 <?import javafx.scene.text.Text?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="140.0" styleClass="forecast_container" stylesheets="@../Styles/ForecastCell.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label fx:id="day_lbl" styleClass="day_lbl" text="Day" />
-      <Line endX="40.29289245605469" endY="-0.621320366859436" startX="-53.67768859863281" startY="-0.6214076280593872" />
-      <ImageView fx:id="weather_img" fitHeight="95.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label fx:id="high_lbl" styleClass="week_temp_lbl" text="92°" textOverrun="CLIP" wrapText="true" />
-            <Label text="/">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="low_lbl" styleClass="week_temp_lbl" text="72°" textOverrun="CLIP">
-               <font>
-                  <Font name="System Italic" size="10.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <Line endX="40.29289245605469" endY="-0.621320366859436" startX="-53.67768859863281" startY="-0.6214076280593872" />
-      <VBox prefHeight="120.0" prefWidth="100.0" styleClass="weather_box">
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Feels Like:" />
-                  <Label fx:id="feels_like_lbl" text="Label" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <VBox prefHeight="120.0" prefWidth="100.0" styleClass="weather_box">
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precipitation:" />
-                  <Label fx:id="precip_lbl" text="Label" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Humidity:" />
-                  <Label fx:id="humidity_lbl" text="Label" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wind:" />
-                  <Label fx:id="wind_lbl" text="Label" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
+      prefWidth="140.0" styleClass="forecast_container" stylesheets="@../Styles/ForecastCell.css"
+      xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="day_lbl" styleClass="day_lbl" text="Day"/>
+   <Line endX="40.29289245605469" endY="-0.621320366859436" startX="-53.67768859863281" startY="-0.6214076280593872"/>
+   <ImageView fx:id="weather_img" fitHeight="95.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true"/>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <Label fx:id="high_lbl" styleClass="week_temp_lbl" text="92°" textOverrun="CLIP" wrapText="true"/>
+      <Label text="/">
+         <font>
+            <Font size="18.0"/>
+         </font>
+      </Label>
+      <Label fx:id="low_lbl" styleClass="week_temp_lbl" text="72°" textOverrun="CLIP">
+         <font>
+            <Font name="System Italic" size="10.0"/>
+         </font>
+      </Label>
+   </HBox>
+   <Line endX="40.29289245605469" endY="-0.621320366859436" startX="-53.67768859863281" startY="-0.6214076280593872"/>
+   <VBox prefHeight="120.0" prefWidth="100.0" styleClass="weather_box">
+      <children>
+         <HBox prefHeight="100.0" prefWidth="200.0"/>
+         <HBox prefHeight="100.0" prefWidth="200.0"/>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Feels Like:"/>
+               <Label fx:id="feels_like_lbl" text="Label"/>
+            </children>
+         </HBox>
+      </children>
+   </VBox>
+   <VBox prefHeight="120.0" prefWidth="100.0" styleClass="weather_box">
+      <children>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precipitation:"/>
+               <Label fx:id="precip_lbl" text="Label"/>
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Humidity:"/>
+               <Label fx:id="humidity_lbl" text="Label"/>
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wind:"/>
+               <Label fx:id="wind_lbl" text="Label"/>
+            </children>
+         </HBox>
+      </children>
+   </VBox>
 </VBox>

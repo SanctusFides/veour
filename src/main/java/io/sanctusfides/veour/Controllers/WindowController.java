@@ -46,6 +46,7 @@ public class WindowController implements Initializable {
             for (int i = 0; i < Model.getInstance().getWeeklyForecast().length; i++) {
 //              Create the forecast cell GUI element from the FXML
                 VBox forecastCell = FXMLLoader.load(getClass().getResource("/Fxml/ForecastCell.fxml"));
+//                System.out.println(forecastCell.getChildren());
 //              Add VBox element to array, which allows us to iterate through the individual days in this loop to set
 //              other things like onClick. This is just a port for future options - currently not used
                 week[i] = forecastCell;

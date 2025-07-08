@@ -51,22 +51,51 @@ public class APIDriver {
     private Forecast[] convertJsonToWeekForecast(Object weather) throws JsonProcessingException {
         JsonNode currentNode = mapToJsonNodes(weather, "current");
         JsonNode dailyNode = mapToJsonNodes(weather,"daily");
-        return buildWeekForecast(currentNode,dailyNode);
+
+        System.out.println(dailyNode);
+        JsonNode timeNode = dailyNode.get("time");
+        JsonNode avgTempNode = dailyNode.get("temperature_2m_mean");
+        JsonNode maxTempNode = dailyNode.get("temperature_2m_max");
+        JsonNode minTempNode = dailyNode.get("temperature_2m_min");
+        JsonNode feelsLikeTempNode = dailyNode.get("apparent_temperature_mean");
+        JsonNode humidityNode = dailyNode.get("relative_humidity_2m_mean");
+        JsonNode precipNode = dailyNode.get("precipitation_probability_mean");
+        JsonNode weatherCodeNode = dailyNode.get("weather_code");
+
+
+        return buildWeekForecast(
+                currentNode, timeNode, avgTempNode, maxTempNode, minTempNode, feelsLikeTempNode,
+                humidityNode,precipNode, weatherCodeNode
+        );
     }
 
 // Handles the actual building of forecast - adhering to the single responsibility principal
-    private Forecast[] buildWeekForecast(JsonNode currentNode, JsonNode dailyNode) {
+    private Forecast[] buildWeekForecast(JsonNode currentNode, JsonNode timeNode,
+                                         JsonNode avgTempNode, JsonNode maxTempNode, JsonNode minTempNode,
+                                         JsonNode feelsLikeTempNode, JsonNode humidtyNode, JsonNode precipNode,
+                                         JsonNode weathCodeNode) {
+//              TODO BUILD OUT THE RAIL SWITCH FOR DAY 0 ASSIGN CURRENT AND AFTER 0, ASSIGN AVERAGE
+//              TODO THEN ITERATE THROUGH WITH I BEING SENT INTO THE BUILD TO FETCH THE PROPER INDEX POS
+
         Forecast[] week = new Forecast[7];
         for (int i = 0; i < 7; i++) {
             Forecast forecast = new Forecast();
-            forecast.setTemp(currentNode.get("temperature_2m").asDouble());
-            forecast.setHigh(dailyNode.get("temperature_2m_max").get(0).asDouble());
-            forecast.setLow(dailyNode.get("temperature_2m_min").get(0).asDouble());
-            forecast.setFeelsLikeTemp(currentNode.get("apparent_temperature").asDouble());
-            forecast.setHumidity(currentNode.get("relative_humidity_2m").asDouble());
+            if (i == 0) {
+                forecast.setTemp(currentNode.get("temperature_2m").asDouble());
+            } else {
+                forecast.setTemp(avgTempNode.get(i).asDouble());
+            }
+            forecast.setHigh(maxTempNode.get(i).asDouble());
+            forecast.setLow(minTempNode.get(i).asDouble());
+            forecast.setFeelsLikeTemp(feelsLikeTempNode.get(i).asDouble());
+            forecast.setHumidity(humidtyNode.get(i).asDouble());
+            forecast.setDate(LocalDate.parse(timeNode.get(i).asText()));
+            forecast.setWeatherCode(weathCodeNode.get(i).asText());
+            forecast.setPrecipitation(precipNode.get(i).asDouble());
             forecast.setWindSpeed(0.0);
             forecast.setWindDirection(0.0);
-            forecast.setDate(LocalDate.parse(dailyNode.get("time").get(0).asText()));
+
+            System.out.println(forecast.getDayNameString());
 
             week[i] = forecast;
         }

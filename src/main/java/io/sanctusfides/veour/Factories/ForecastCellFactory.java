@@ -12,6 +12,10 @@ public class ForecastCellFactory{
     public ForecastCellFactory() {
 
     }
+/* The Get indexes for ForecastCell
+*  0:daylabel, 1:line, 2:weather svg, 3: weather temp, 4:day status, 5:weather description, 6:line,
+*  7:highLowFeelsLikeTempBox, 8: precipHumidWindBox
+*/
 
     public void buildForecastElement(VBox cell, Forecast forecast) {
 
@@ -24,8 +28,14 @@ public class ForecastCellFactory{
         Label tempLbl = (Label) cell.getChildren().get(3);
         tempLbl.setText(forecast.getTempString());
 
-        VBox highLowFeelsLikeTempBox = (VBox) cell.getChildren().get(5);
-        VBox precipHumidWindBox = (VBox) cell.getChildren().get(6);
+        Label dayStatus = (Label) cell.getChildren().get(4);
+        dayStatus.setText("Fizz");
+
+        Label weatherDescription = (Label) cell.getChildren().get(5);
+        weatherDescription.setText("Buzz");
+
+        VBox highLowFeelsLikeTempBox = (VBox) cell.getChildren().get(7);
+        VBox precipHumidWindBox = (VBox) cell.getChildren().get(8);
 
         HBox highBox = (HBox) highLowFeelsLikeTempBox.getChildren().getFirst();
         Label highLbl = (Label) highBox.getChildren().get(1);
@@ -51,18 +61,5 @@ public class ForecastCellFactory{
         HBox windBox = (HBox) precipHumidWindBox.getChildren().get(2);
         Label windLbl = (Label) windBox.getChildren().get(1);
         windLbl.setText("TBD");
-
-
-//        Label highLbl = (Label) cell.getChildren()
-
-//        temp_lbl.setText(String.valueOf(forecast.getTemp()));
-//        day_lbl.setText(LocalDateTime.parse(forecast.getDate()).getDayOfWeek().toString());
-//        high_lbl.setText(String.valueOf(forecast.getHigh()));
-//        low_lbl.setText(String.valueOf(forecast.getLow()));
-//        feels_like_lbl.setText(String.valueOf(forecast.getFeelsLikeTemp()));
-//        precip_lbl.setText(String.valueOf(forecast.getPrecipitation()));
-//        humidity_lbl.setText(String.valueOf(forecast.getHumidity()));
-//        wind_lbl.setText(String.valueOf(forecast.getWindSpeed()));
-
     }
 }
