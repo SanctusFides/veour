@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="vbox_body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="140.0" styleClass="forecast_container" stylesheets="@../Styles/ForecastCell.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.sanctusfides.veour.Controllers.ForecastCellController">
+<VBox fx:id="vbox_body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="180.0" styleClass="forecast_container" stylesheets="@../Styles/ForecastCell.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.sanctusfides.veour.Controllers.ForecastCellController">
    <Label fx:id="day_lbl" styleClass="day_lbl" text="Day" />
-   <Line endX="40.29289245605469" endY="-0.621320366859436" startX="-53.67768859863281" startY="-0.6214076280593872" />
+   <Line endX="40.29289245605469" endY="-0.621320366859436" startX="-53.67768859863281" startY="-0.6214076280593872" stroke="WHITE" style="-fx-fill: #FFFFFF;" />
    <ImageView fx:id="weather_img" fitHeight="95.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
       <VBox.margin>
          <Insets top="10.0" />
@@ -18,8 +18,8 @@
    <Label fx:id="temp_lbl" styleClass="temp_lbl" text="92°" />
    <Label fx:id="forecast_active_status_lbl" styleClass="temp_status_lbl" text="Current" />
    <Label fx:id="weather_descr_lbl" styleClass="weather_description" text="Status" />
-   <Line endX="40.29289245605469" endY="-0.621320366859436" startX="-53.67768859863281" startY="-0.6214076280593872" />
-   <VBox prefHeight="120.0" prefWidth="100.0" styleClass="weather_box">
+   <Line endX="40.29289245605469" endY="-0.621320366859436" startX="-53.67768859863281" startY="-0.6214076280593872" stroke="WHITE" />
+   <VBox alignment="CENTER" prefHeight="120.0" prefWidth="100.0" styleClass="weather_box">
       <HBox prefHeight="100.0" prefWidth="200.0">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="High:" />
          <Label fx:id="high_lbl" text="Label" />
@@ -32,8 +32,11 @@
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Feels Like:" />
          <Label fx:id="feels_like_lbl" text="Label" />
       </HBox>
+      <VBox.margin>
+         <Insets left="25.0" />
+      </VBox.margin>
    </VBox>
-   <VBox prefHeight="120.0" prefWidth="100.0" styleClass="weather_box">
+   <VBox alignment="CENTER" prefHeight="120.0" prefWidth="100.0" styleClass="weather_box">
       <HBox prefHeight="100.0" prefWidth="200.0">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precipitation:" />
          <Label fx:id="precip_lbl" text="Label" />
@@ -46,5 +49,8 @@
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wind:" />
          <Label fx:id="wind_lbl" text="Label" />
       </HBox>
+      <VBox.margin>
+         <Insets left="25.0" />
+      </VBox.margin>
    </VBox>
 </VBox>

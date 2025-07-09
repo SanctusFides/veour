@@ -1,7 +1,13 @@
 .top_menu_container {
     -fx-alignment: center-left;
+    -fx-background-color: #001945;
 }
-.top_menu_container Text {
-    -fx-font-size: 2.6em;
+
+.top_menu_container HBox {
+    -fx-spacing: 8;
+}
+.top_menu_container Label {
+    -fx-font-size: 1.6em;
     -fx-font-family: "Calibri Light";
+    -fx-font-fill: white;
 }

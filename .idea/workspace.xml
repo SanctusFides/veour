@@ -4,15 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Stitched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/ForecastCellController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Forecast.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ForecastCellFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ForecastCell.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Added the weather images to the forecast cells that load an image based on the weather code. Started with SVGs but learned they don't work well with javafx and changed to png">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Styles/Window.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Factories/ForecastCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Factories/ForecastCellFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/ForecastCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ForecastCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/WeatherPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/WeatherPanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Weather/cloudy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Weather/cloudy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Weather/drizzle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Weather/drizzle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Weather/fog.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Weather/fog.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Weather/partly-cloudy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Weather/partly-cloudy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Weather/rain.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Weather/rain.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Weather/snow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Weather/snow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Weather/storm.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Weather/storm.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Weather/sun.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Weather/sun.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/ForecastCell.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/ForecastCell.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/TopMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/TopMenu.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,27 +32,27 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "SanctusFides"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SanctusFides&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/SanctusFides/veour.git",
-    "accountId": "e250c1bc-d06b-4caa-8b3f-71bf8ee7c352"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SanctusFides/veour.git&quot;,
+    &quot;accountId&quot;: &quot;e250c1bc-d06b-4caa-8b3f-71bf8ee7c352&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -53,9 +63,9 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2yurq3NXbsTrNz17LHLc18SVHSP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -64,18 +74,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/John1/Code/Veour/veour/src/main/resources/Images&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\John1\Code\Veour\veour\src\main\resources\Images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\John1\Code\Veour\veour\src\main\resources\Images\Weather" />
+      <recent name="C:\Users\John1\Code\Veour\veour\src\main\resources\Images" />
       <recent name="C:\Users\John1\Code\Veous\veour\src\main\resources\Images" />
       <recent name="C:\Users\John1\Code\Veous\veour\src\main\resources\Fxml" />
     </key>
@@ -187,7 +204,103 @@
       <option name="project" value="LOCAL" />
       <updated>1750707455397</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Created ForecastCells to contain and display weather forecasts">
+      <option name="closed" value="true" />
+      <created>1750714657867</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1750714657867</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updating gitignore">
+      <option name="closed" value="true" />
+      <created>1750714678974</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1750714678974</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updating gitignore">
+      <option name="closed" value="true" />
+      <created>1750714741632</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1750714741632</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Created APIDriver to handle fetch request to open-meteo. Starting with static test url to fill in UI and then will add in user defined search">
+      <option name="closed" value="true" />
+      <created>1750718847111</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1750718847111</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Reworked somethings to get the structure better and the code cleaner. Getting ready to start testing methods of loading API data into weather cells">
+      <option name="closed" value="true" />
+      <created>1751407750028</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1751407750028</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Refactored API driver - improved the flow and parsing methods to retrieve the values from API response">
+      <option name="closed" value="true" />
+      <created>1751483085984</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1751483085984</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Everything is finally working great to load 7 days worth with values pulled from Forecast obj. Next up is putting additional days onto a rail for a weeks forecast">
+      <option name="closed" value="true" />
+      <created>1751846871746</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1751846871746</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added the concept of the weekday forecast to the model to decouple code better. Reworking to change from loading static test to being driven by UI interactions">
+      <option name="closed" value="true" />
+      <created>1751917625966</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1751917625966</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Many refactors: Moved loading weather from WindowController to Model.java, logic being the weather needs to be accessible across whole program and not just window load. Now pulls forecast from model to use in window load">
+      <option name="closed" value="true" />
+      <created>1751926273863</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1751926273863</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Now have the week's worth of values loading into the cells and populating the labels with their values correctly.">
+      <option name="closed" value="true" />
+      <created>1751995241749</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1751995241749</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added weather code conversion to add weather status to forecast cell along with day active status. Ready for SVG selection and add to cell">
+      <option name="closed" value="true" />
+      <created>1751998183859</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1751998183859</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added the weather images to the forecast cells that load an image based on the weather code. Started with SVGs but learned they don't work well with javafx and changed to png">
+      <option name="closed" value="true" />
+      <created>1752091543475</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1752091543475</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -195,6 +308,17 @@
     <MESSAGE value="Base foundation created to launch blank window - ready for GUI styling and design" />
     <MESSAGE value="Stiched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides" />
     <MESSAGE value="Stitched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stitched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides" />
+    <MESSAGE value="Created ForecastCells to contain and display weather forecasts" />
+    <MESSAGE value="Updating gitignore" />
+    <MESSAGE value="Created APIDriver to handle fetch request to open-meteo. Starting with static test url to fill in UI and then will add in user defined search" />
+    <MESSAGE value="Reworked somethings to get the structure better and the code cleaner. Getting ready to start testing methods of loading API data into weather cells" />
+    <MESSAGE value="Refactored API driver - improved the flow and parsing methods to retrieve the values from API response" />
+    <MESSAGE value="Everything is finally working great to load 7 days worth with values pulled from Forecast obj. Next up is putting additional days onto a rail for a weeks forecast" />
+    <MESSAGE value="Added the concept of the weekday forecast to the model to decouple code better. Reworking to change from loading static test to being driven by UI interactions" />
+    <MESSAGE value="Many refactors: Moved loading weather from WindowController to Model.java, logic being the weather needs to be accessible across whole program and not just window load. Now pulls forecast from model to use in window load" />
+    <MESSAGE value="Now have the week's worth of values loading into the cells and populating the labels with their values correctly." />
+    <MESSAGE value="Added weather code conversion to add weather status to forecast cell along with day active status. Ready for SVG selection and add to cell" />
+    <MESSAGE value="Added the weather images to the forecast cells that load an image based on the weather code. Started with SVGs but learned they don't work well with javafx and changed to png" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the weather images to the forecast cells that load an image based on the weather code. Started with SVGs but learned they don't work well with javafx and changed to png" />
   </component>
 </project>

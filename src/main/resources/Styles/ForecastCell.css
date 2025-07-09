@@ -1,27 +1,32 @@
 .forecast_container {
-    -fx-alignment: top_center
+    -fx-alignment: top_center;
+    -fx-background-color: linear-gradient(to bottom, #001945, #254b8f);
 }
 
 .day_lbl {
     -fx-padding: 15 0 15 0;
     -fx-font-size: 1.5em;
     -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
 .temp_lbl {
         -fx-padding: 15 0 5 0;
         -fx-font-size: 3.2em;
         -fx-font-weight: bold;
+        -fx-text-fill: white;
 }
 
 .weather_description {
         -fx-padding: 5 0 5 0;
         -fx-font-size: 1.6em;
         -fx-font-weight: bold;
+        -fx-text-fill: white;
 }
 
 .temp_status_lbl{
         -fx-font-size: 1.2em;
+        -fx-text-fill: white;
 }
 
 .weather_box {
@@ -32,6 +37,11 @@ HBox {
     -fx-spacing: 5;
 }
 
+HBox Text {
+    -fx-fill: white;
+}
+
 HBox Label {
     -fx-font-weight: bold;
+    -fx-text-fill: white;
 }

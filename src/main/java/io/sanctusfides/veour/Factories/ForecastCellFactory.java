@@ -14,15 +14,16 @@ import java.util.Objects;
 
 public class ForecastCellFactory{
 
-    public ForecastCellFactory() {
-
-    }
 /* The Get indexes for ForecastCell
 *  0:daylabel, 1:line, 2:weather svg, 3: weather temp, 4:day status, 5:weather description, 6:line,
 *  7:highLowFeelsLikeTempBox, 8: precipHumidWindBox
 */
 
     public void buildForecastElement(VBox cell, Forecast forecast, int dayCount) {
+        // Sets the border on the right side of each sell as long as they aren't the last one
+        if (dayCount < 6) {
+            cell.setStyle("-fx-border-style: hidden solid hidden hidden; -fx-border-color: white; -fx-border-width: 1;");
+        }
         Label dayLbl = (Label) cell.getChildren().get(0);
         dayLbl.setText(forecast.getDayNameString());
 
@@ -30,7 +31,6 @@ public class ForecastCellFactory{
         Image image = new Image(displayWeatherSvg(forecast.getWeatherCode()));
 
         imgView.setImage(image);
-
 
         Label tempLbl = (Label) cell.getChildren().get(3);
         tempLbl.setText(forecast.getTempString());
@@ -41,7 +41,6 @@ public class ForecastCellFactory{
         } else {
             dayStatus.setText("Average");
         }
-
 
         Label weatherDescription = (Label) cell.getChildren().get(5);
         weatherDescription.setText(convertWeatherCode(forecast.getWeatherCode()));
