@@ -2,9 +2,14 @@ package io.sanctusfides.veour.Factories;
 
 import io.sanctusfides.veour.Models.Forecast;
 import javafx.scene.control.Label;
+
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+
+import java.util.Objects;
 
 
 public class ForecastCellFactory{
@@ -21,8 +26,11 @@ public class ForecastCellFactory{
         Label dayLbl = (Label) cell.getChildren().get(0);
         dayLbl.setText(forecast.getDayNameString());
 
-        // ToDo get svg files to use here
         ImageView imgView = (ImageView) cell.getChildren().get(2);
+        Image image = new Image(displayWeatherSvg(forecast.getWeatherCode()));
+
+        imgView.setImage(image);
+
 
         Label tempLbl = (Label) cell.getChildren().get(3);
         tempLbl.setText(forecast.getTempString());
@@ -66,6 +74,22 @@ public class ForecastCellFactory{
         HBox windBox = (HBox) precipHumidWindBox.getChildren().get(2);
         Label windLbl = (Label) windBox.getChildren().get(1);
         windLbl.setText("TBD");
+    }
+
+    private String displayWeatherSvg(String code) {
+        return switch (code) {
+            case "0" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/sun.png")).toString();
+            case "1", "2" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/partly-cloudy.png")).toString();
+            case "3" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/cloudy.png")).toString();
+            case "45", "48" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/fog.png")).toString();
+            case "51", "53", "55", "56", "57" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/drizzle.png")).toString();
+            case "61", "63", "65", "66", "67" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/rain.png")).toString();
+            case "71", "73", "75", "77" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/snow.png")).toString();
+            case "80", "81", "82" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/rain.png")).toString();
+            case "85", "86" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/snow.png")).toString();
+            case "95", "96", "99" -> Objects.requireNonNull(getClass().getResource("/Images/Weather/storm.png")).toString();
+            default -> "error";
+        };
     }
 
     private String convertWeatherCode(String code) {
