@@ -93,7 +93,6 @@ public class Forecast {
     public String getPrecipitationString() {
         return precipitation +"%";
     }
-
     public String getWindSpeedString() {
         return windSpeed +" mp/h";
     }

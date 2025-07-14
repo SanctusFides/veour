@@ -3,5 +3,7 @@
 <?import javafx.scene.layout.HBox?>
 
 
-<HBox fx:id="weather_panel_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1260.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.sanctusfides.veour.Controllers.WindowController">
+<HBox fx:id="weather_panel_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1260.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="io.sanctusfides.veour.Controllers.WindowController"
+        >
 </HBox>

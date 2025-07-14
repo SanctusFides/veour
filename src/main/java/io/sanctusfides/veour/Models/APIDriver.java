@@ -25,7 +25,7 @@ public class APIDriver {
         this.mapper = new ObjectMapper();
     }
 
-// Makes the network request to the API url and passes along the response to be converted into JSON for parsing
+//  Makes the network request to the API url and passes along the response to be converted into JSON for parsing
     private HttpResponse<String> handleRequest(URI url) throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
@@ -37,19 +37,19 @@ public class APIDriver {
         return response;
     }
 
-// Takes network response and converts it into a json to use get methods on
+//  Takes network response and converts it into a json to use get methods on
     private Object convertHttpToJson(HttpResponse<String> response) throws ParseException {
         JSONParser parser = new JSONParser();
         return parser.parse(response.body());
     }
 
-// Takes the JSON and a string and retrieves the requested parent section from the JSON - needed for nested sections
+//  Takes the JSON and a string and retrieves the requested parent section from the JSON - needed for nested sections
     private JsonNode mapToJsonNodes(Object weather,String jsonParent) throws JsonProcessingException {
         JsonNode node = mapper.readTree(String.valueOf(weather));
         return node.get(jsonParent);
     }
 
-// Now that the request has been parsed for the relevant sections, the values are retrieved and returned attached to model
+//  Now that the request has been parsed for the relevant sections, the values are retrieved and returned attached to model
     private Forecast[] convertJsonToWeekForecast(Object weather) throws JsonProcessingException {
         JsonNode currentNode = mapToJsonNodes(weather, "current");
         JsonNode dailyNode = mapToJsonNodes(weather,"daily");
@@ -73,7 +73,7 @@ public class APIDriver {
         );
     }
 
-// Handles the actual building of forecast - adhering to the single responsibility principal
+//  Handles the actual building of forecast - adhering to the single responsibility principal
     private Forecast[] buildWeekForecast(JsonNode currentNode, JsonNode timeNode, JsonNode avgTempNode,
                                          JsonNode maxTempNode, JsonNode minTempNode, JsonNode feelsLikeTempNode,
                                          JsonNode humidtyNode, JsonNode precipNode, JsonNode weathCodeNode,
@@ -108,19 +108,6 @@ public class APIDriver {
         }
         return week;
     }
-//    Old method for the one above, this one worked when it was single day tests
-//    private Forecast buildForecast(JsonNode currentNode, JsonNode dailyNode) {
-//        Forecast forecast = new Forecast();
-//        forecast.setTemp(currentNode.get("temperature_2m").asDouble());
-//        forecast.setHigh(dailyNode.get("temperature_2m_max").get(0).asDouble());
-//        forecast.setLow(dailyNode.get("temperature_2m_min").get(0).asDouble());
-//        forecast.setFeelsLikeTemp(currentNode.get("apparent_temperature").asDouble());
-//        forecast.setHumidity(currentNode.get("relative_humidity_2m").asDouble());
-//        forecast.setWindSpeed(0.0);
-//        forecast.setWindDirection(0.0);
-//        forecast.setDate(LocalDate.parse(dailyNode.get("time").get(0).asText()));
-//        return forecast;
-//    }
 
     public Forecast[] getWeather(URI url) throws ParseException, JsonProcessingException {
         HttpResponse<String> request = null;
@@ -143,7 +130,6 @@ public class APIDriver {
             throw new RuntimeException(e);
         }
         assert request != null;
-//        System.out.println(request.body());
         return "hello";
     }
 }

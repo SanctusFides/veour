@@ -24,48 +24,45 @@ public final class Utility {
 
     public static Image getWindDirectionArrowImage(int code) {
         Image image = null;
-        if (code < 20) {
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/Arrows/north.png")).toString());
-        } else if (code < 70) {
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/Arrows/northeast.png")).toString());
-        } else if (code < 110) {
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/Arrows/east.png")).toString());
-        } else if (code < 160) {
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/Arrows/southeast.png")).toString());
-        } else if (code < 200) {
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/Arrows/south.png")).toString());
-        } else if (code < 250) {
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/Arrows/southwest.png")).toString());
-        } else if (code < 290) {
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/Arrows/west.png")).toString());
-        } else if (code < 340) {
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/Arrows/northwest.png")).toString());
+        if (code < 10) {
+            image = new Image(Utility.class.getResource("/Images/Arrows/south.png").toString());
+        } else if (code < 80) {
+            image = new Image(Utility.class.getResource("/Images/Arrows/southwest.png").toString());
+        } else if (code < 100) {
+            image = new Image(Utility.class.getResource("/Images/Arrows/west.png").toString());
+        } else if (code < 170) {
+            image = new Image(Utility.class.getResource("/Images/Arrows/northwest.png").toString());
+        } else if (code < 190) {
+            image = new Image(Utility.class.getResource("/Images/Arrows/north.png").toString());
+        } else if (code < 260) {
+            image = new Image(Utility.class.getResource("/Images/Arrows/northeast.png").toString());
+        } else if (code < 280) {
+            image = new Image(Utility.class.getResource("/Images/Arrows/east.png").toString());
+        } else if (code < 350) {
+            image = new Image(Utility.class.getResource("/Images/Arrows/southeast.png").toString());
         } else if (code <= 360 ){
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/Arrows/north.png")).toString());
+            image = new Image(Utility.class.getResource("/Images/Arrows/south.png").toString());
         } else {
-            image = new Image(Objects.requireNonNull(Utility.class.getResource("/Images/error.png")).toString());
+            image = new Image(Utility.class.getResource("/Images/error.png").toString());
         }
-//      This is the inverted set of wind direction. Thought it may be right but turns out wrong.
-//      TODO Delete after verifying which set is valid
-
 //        if (code < 20) {
-//            image = new Image(Utility.class.getResource("/Images/Arrows/south.png").toString());
-//        } else if (code < 70) {
-//            image = new Image(Utility.class.getResource("/Images/Arrows/southwest.png").toString());
-//        } else if (code < 110) {
-//            image = new Image(Utility.class.getResource("/Images/Arrows/west.png").toString());
-//        } else if (code < 160) {
-//            image = new Image(Utility.class.getResource("/Images/Arrows/northwest.png").toString());
-//        } else if (code < 200) {
 //            image = new Image(Utility.class.getResource("/Images/Arrows/north.png").toString());
-//        } else if (code < 250) {
+//        } else if (code < 70) {
 //            image = new Image(Utility.class.getResource("/Images/Arrows/northeast.png").toString());
-//        } else if (code < 290) {
+//        } else if (code < 110) {
 //            image = new Image(Utility.class.getResource("/Images/Arrows/east.png").toString());
-//        } else if (code < 340) {
+//        } else if (code < 160) {
 //            image = new Image(Utility.class.getResource("/Images/Arrows/southeast.png").toString());
-//        } else if (code <= 360 ){
+//        } else if (code < 200) {
 //            image = new Image(Utility.class.getResource("/Images/Arrows/south.png").toString());
+//        } else if (code < 250) {
+//            image = new Image(Utility.class.getResource("/Images/Arrows/southwest.png").toString());
+//        } else if (code < 290) {
+//            image = new Image(Utility.class.getResource("/Images/Arrows/west.png").toString());
+//        } else if (code < 340) {
+//            image = new Image(Utility.class.getResource("/Images/Arrows/northwest.png").toString());
+//        } else if (code <= 360 ){
+//            image = new Image(Utility.class.getResource("/Images/Arrows/north.png").toString());
 //        } else {
 //            image = new Image(Utility.class.getResource("/Images/error.png").toString());
 //        }

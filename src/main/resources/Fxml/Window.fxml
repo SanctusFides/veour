@@ -9,6 +9,7 @@
 
     <center>
         <fx:include source="WeatherPanel.fxml" />
+<!--        <fx:include source="WelcomePanel.fxml" />-->
     </center>
 
     <bottom>

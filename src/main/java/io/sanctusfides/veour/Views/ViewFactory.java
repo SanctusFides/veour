@@ -1,5 +1,6 @@
 package io.sanctusfides.veour.Views;
 
+import io.sanctusfides.veour.Controllers.WindowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,6 +19,8 @@ public class ViewFactory {
     // Main window container for the app that opens on launch and houses the center and top panels
     public void showWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Window.fxml"));
+//        WindowController controller = new WindowController();
+//        loader.setController(controller);
         createStage(loader);
     }
 

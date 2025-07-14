@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<HBox fx:id="weather_panel_main" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="550.0" prefWidth="1260.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="io.sanctusfides.veour.Controllers.WindowController">
+   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome, please enter your zipcode above">
+      <font>
+         <Font size="48.0"/>
+      </font>
+   </Text>
+</HBox>

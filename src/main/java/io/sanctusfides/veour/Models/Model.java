@@ -63,7 +63,6 @@ public class Model {
         weeklyForecast[dayCount] = forecast;
     }
 
-
     public ViewFactory getViewFactory() {
         return viewFactory;
     }
