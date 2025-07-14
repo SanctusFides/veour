@@ -1,5 +1,6 @@
 package io.sanctusfides.veour.Controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.sanctusfides.veour.Models.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.json.simple.parser.ParseException;
 
 
 import java.net.URL;
@@ -48,9 +50,8 @@ public class WindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         week = new VBox[7];
-
-
-        showForecast();
+        addListener();
+//        showForecast();
     }
 
     private void showForecast() {
@@ -75,5 +76,18 @@ public class WindowController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    private void addListener() {
+        search_btn.setOnAction(actionEvent -> {
+            System.out.println("click!");
+            try {
+                Object city = Model.getInstance().getApiDriver().getCityName(search_fld.getText());
+                System.out.println(city);
+            } catch (JsonProcessingException | ParseException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
 
 }

@@ -121,15 +121,24 @@ public class APIDriver {
         return convertJsonToWeekForecast(weatherJSON);
     }
 
-    public String getCityName() {
+    public String getCityName(String userCityInput) throws JsonProcessingException, ParseException {
         HttpResponse<String> request = null;
-        try {
-            URI cityUrl = URI.create("https://geocoding-api.open-meteo.com/v1/search?name=Houston&count=10&language=en&format=json");
-            request = handleRequest(cityUrl);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        if (!userCityInput.isEmpty()) {
+            try {
+                String formattedInput = userCityInput.trim().toLowerCase().replace(" ", "+");
+                URI cityUrl = URI.create("https://geocoding-api.open-meteo.com/v1/search?name=" + formattedInput + "&count=10&language=en&format=json");
+                request = handleRequest(cityUrl);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            assert request != null;
+            Object parsedResult = convertHttpToJson(request);
+            JsonNode cityJson = mapToJsonNodes(parsedResult, "results");
+            JsonNode test = cityJson.get(0);
+            String cityName = test.get("name").asText();
+            String stateName = test.get("admin1").asText();
+            return cityName + ", " + stateName;
         }
-        assert request != null;
-        return "hello";
+        return "Error";
     }
 }
