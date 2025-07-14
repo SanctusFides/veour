@@ -79,9 +79,8 @@ public class WindowController implements Initializable {
 
     private void addListener() {
         search_btn.setOnAction(actionEvent -> {
-            System.out.println("click!");
             try {
-                Object city = Model.getInstance().getApiDriver().getCityName(search_fld.getText());
+                String city = Model.getInstance().getApiDriver().getCityLatAndLong(search_fld.getText());
                 System.out.println(city);
             } catch (JsonProcessingException | ParseException e) {
                 throw new RuntimeException(e);

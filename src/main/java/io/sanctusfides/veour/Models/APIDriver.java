@@ -13,6 +13,7 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static io.sanctusfides.veour.Utilities.Utility.mapWeatherCodeToWeatherDescr;
 
@@ -121,12 +122,17 @@ public class APIDriver {
         return convertJsonToWeekForecast(weatherJSON);
     }
 
-    public String getCityName(String userCityInput) throws JsonProcessingException, ParseException {
+    public String getCityLatAndLong(String userCityInput) throws JsonProcessingException, ParseException {
+
         HttpResponse<String> request = null;
+        AtomicReference<String> lat = new AtomicReference<>();
+        AtomicReference<String> lon = new AtomicReference<>();
         if (!userCityInput.isEmpty()) {
+            String userCityName = userCityInput.substring(0,userCityInput.indexOf(",")).toLowerCase();
+            String userStateName = userCityInput.substring(userCityInput.indexOf(",")+1).trim().toLowerCase();
             try {
-                String formattedInput = userCityInput.trim().toLowerCase().replace(" ", "+");
-                URI cityUrl = URI.create("https://geocoding-api.open-meteo.com/v1/search?name=" + formattedInput + "&count=10&language=en&format=json");
+
+                URI cityUrl = URI.create("https://geocoding-api.open-meteo.com/v1/search?name=" + userCityName + "&count=10&language=en&format=json");
                 request = handleRequest(cityUrl);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -134,11 +140,16 @@ public class APIDriver {
             assert request != null;
             Object parsedResult = convertHttpToJson(request);
             JsonNode cityJson = mapToJsonNodes(parsedResult, "results");
-            JsonNode test = cityJson.get(0);
-            String cityName = test.get("name").asText();
-            String stateName = test.get("admin1").asText();
-            return cityName + ", " + stateName;
+
+            cityJson.forEach(local -> {
+                if (local.get("name").asText().toLowerCase().equals(userCityName) && local.get("admin1").asText().toLowerCase().equals(userStateName)) {
+                    lat.set(local.get("latitude").asText());
+                    lon.set(local.get("longitude").asText());
+                }
+            });
+        } else {
+            return "Error";
         }
-        return "Error";
+        return lat.get() + lon.get();
     }
 }
