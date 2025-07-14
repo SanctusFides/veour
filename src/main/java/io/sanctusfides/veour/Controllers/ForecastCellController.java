@@ -32,6 +32,9 @@ public class ForecastCellController implements Initializable {
     private Label humidity_lbl;
     @FXML
     private Label wind_lbl;
+    @FXML
+    private ImageView wind_img;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

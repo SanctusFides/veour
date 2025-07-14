@@ -11,22 +11,22 @@
 }
 
 .temp_lbl {
-        -fx-padding: 15 0 5 0;
-        -fx-font-size: 3.2em;
-        -fx-font-weight: bold;
-        -fx-text-fill: white;
+    -fx-padding: 15 0 5 0;
+    -fx-font-size: 3.2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
 .weather_description {
-        -fx-padding: 5 0 5 0;
-        -fx-font-size: 1.6em;
-        -fx-font-weight: bold;
-        -fx-text-fill: white;
+    -fx-padding: 5 0 5 0;
+    -fx-font-size: 1.6em;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
 .temp_status_lbl{
-        -fx-font-size: 1.2em;
-        -fx-text-fill: white;
+    -fx-font-size: 1.2em;
+    -fx-text-fill: white;
 }
 
 .weather_box {

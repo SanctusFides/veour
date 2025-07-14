@@ -12,80 +12,44 @@ public class Forecast {
     private double precipitation;
     private LocalDate date;
 
-
     private String weatherCode;
+    private String weatherDescription;
 
-    private double windSpeed;
-    private double windDirection;
+    private int windSpeed;
+    private int windDirection;
 
     public Forecast() {}
 
-    public double getTemp() {
-        return temp;
-    }
-
     public void setTemp(double temp) {
         this.temp = temp;
-    }
-
-    public double getHigh() {
-        return high;
     }
 
     public void setHigh(double high) {
         this.high = high;
     }
 
-    public double getLow() {
-        return low;
-    }
-
     public void setLow(double low) {
         this.low = low;
-    }
-
-    public double getFeelsLikeTemp() {
-        return feelsLikeTemp;
     }
 
     public void setFeelsLikeTemp(double feelsLikeTemp) {
         this.feelsLikeTemp = feelsLikeTemp;
     }
 
-    public double getHumidity() {
-        return humidity;
-    }
-
     public void setHumidity(double humidity) {
         this.humidity = humidity;
-    }
-
-    public double getPrecipitation() {
-        return precipitation;
     }
 
     public void setPrecipitation(double precipitation) {
         this.precipitation = precipitation;
     }
 
-    public double getWindSpeed() {
-        return windSpeed;
-    }
-
-    public void setWindSpeed(double windSpeed) {
+    public void setWindSpeed(int windSpeed) {
         this.windSpeed = windSpeed;
     }
 
-    public double getWindDirection() {
-        return windDirection;
-    }
-
-    public void setWindDirection(double windDirection) {
+    public void setWindDirection(int windDirection) {
         this.windDirection = windDirection;
-    }
-
-    public LocalDate getDate() {
-        return date;
     }
 
     public void setDate(LocalDate date) {
@@ -100,29 +64,39 @@ public class Forecast {
         this.weatherCode = weatherCode;
     }
 
+    public String getWeatherDescription() { return weatherDescription; }
+
+    public void setWeatherDescription(String weatherDescription) { this.weatherDescription = weatherDescription; }
+
+    public int getWindDirection() {
+        return windDirection;
+    }
 
     public String getDayNameString() {
         return date.getDayOfWeek().toString();
     }
     public String getTempString() {
-        return String.valueOf(temp)+"°";
+        return temp +"°";
     }
     public String getHighTempString() {
-        return String.valueOf(high)+"°";
+        return high +"°";
     }
     public String getLowTempString() {
-        return String.valueOf(low)+"°";
+        return low +"°";
     }
     public String getFeelsLikeTempString() {
-        return String.valueOf(feelsLikeTemp)+"°";
+        return feelsLikeTemp +"°";
     }
     public String getHumidityString() {
-        return String.valueOf(humidity)+"%";
+        return humidity +"%";
     }
     public String getPrecipitationString() {
-        return String.valueOf(precipitation)+'%';
+        return precipitation +"%";
     }
 
+    public String getWindSpeedString() {
+        return windSpeed +" mp/h";
+    }
 
     @Override
     public String toString() {
@@ -133,6 +107,9 @@ public class Forecast {
                 ", feelsLikeTemp=" + feelsLikeTemp +
                 ", humidity=" + humidity +
                 ", precipitation=" + precipitation +
+                ", date=" + date +
+                ", weatherCode='" + weatherCode + '\'' +
+                ", weatherDescription='" + weatherDescription + '\'' +
                 ", windSpeed=" + windSpeed +
                 ", windDirection=" + windDirection +
                 '}';
