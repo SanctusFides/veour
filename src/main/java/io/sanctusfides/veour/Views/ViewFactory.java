@@ -1,6 +1,5 @@
 package io.sanctusfides.veour.Views;
 
-import io.sanctusfides.veour.Controllers.WindowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -10,7 +9,6 @@ import javafx.stage.Stage;
 public class ViewFactory {
 
     private HBox weatherPanel;
-
 
 /*
     SHOW SECTION

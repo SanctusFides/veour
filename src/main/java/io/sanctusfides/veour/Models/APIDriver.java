@@ -7,13 +7,13 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static io.sanctusfides.veour.Utilities.Utility.mapWeatherCodeToWeatherDescr;
 
@@ -22,7 +22,10 @@ public class APIDriver {
 
     ObjectMapper mapper;
 
-    public APIDriver(){
+    String latitude;
+    String longitude;
+
+    public APIDriver() {
         this.mapper = new ObjectMapper();
     }
 
@@ -110,23 +113,34 @@ public class APIDriver {
         return week;
     }
 
-    public Forecast[] getWeather(URI url) throws ParseException, JsonProcessingException {
+//    public Forecast[] getWeather(URI url) throws ParseException, JsonProcessingException {
+//        HttpResponse<String> request = null;
+//        try {
+//            request = handleRequest(url);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        assert request != null;
+//        Object weatherJSON = convertHttpToJson(request);
+//        return convertJsonToWeekForecast(weatherJSON);
+//    }
+    public Forecast[] getWeather() throws ParseException, JsonProcessingException {
         HttpResponse<String> request = null;
         try {
-            request = handleRequest(url);
+//            request = handleRequest(url);
+            request = handleRequest(createAPIURL());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         assert request != null;
         Object weatherJSON = convertHttpToJson(request);
+        System.out.println(weatherJSON);
         return convertJsonToWeekForecast(weatherJSON);
     }
 
-    public String getCityLatAndLong(String userCityInput) throws JsonProcessingException, ParseException {
-
+    public void setCityLatAndLong(String userCityInput) throws JsonProcessingException, ParseException {
         HttpResponse<String> request = null;
-        AtomicReference<String> lat = new AtomicReference<>();
-        AtomicReference<String> lon = new AtomicReference<>();
         if (!userCityInput.isEmpty()) {
             String userCityName = userCityInput.substring(0,userCityInput.indexOf(",")).toLowerCase();
             String userStateName = userCityInput.substring(userCityInput.indexOf(",")+1).trim().toLowerCase();
@@ -143,13 +157,28 @@ public class APIDriver {
 
             cityJson.forEach(local -> {
                 if (local.get("name").asText().toLowerCase().equals(userCityName) && local.get("admin1").asText().toLowerCase().equals(userStateName)) {
-                    lat.set(local.get("latitude").asText());
-                    lon.set(local.get("longitude").asText());
+                    setLatitude(local.get("latitude").asText());
+                    setLongitude(local.get("longitude").asText());
                 }
             });
-        } else {
-            return "Error";
         }
-        return lat.get() + lon.get();
+    }
+
+    private URI createAPIURL() throws URISyntaxException {
+        return new URI("https://api.open-meteo.com/v1/forecast?latitude=" +
+                latitude+"&longitude="+longitude+
+                "&daily=temperature_2m_max,temperature_2m_min,rain_sum,showers_sum,weather_code,temperature_2m_mean," +
+                "precipitation_probability_mean,relative_humidity_2m_mean,apparent_temperature_mean," +
+                "wind_direction_10m_dominant,wind_speed_10m_mean&current=temperature_2m,precipitation," +
+                "relative_humidity_2m,apparent_temperature,weather_code,rain,showers,wind_speed_10m,wind_direction_10m" +
+                "&timezone=America%2FChicago&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch");
+    }
+
+    private void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    private void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }

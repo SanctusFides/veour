@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import org.json.simple.parser.ParseException;
 
 
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -51,7 +52,6 @@ public class WindowController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         week = new VBox[7];
         addListener();
-//        showForecast();
     }
 
     private void showForecast() {
@@ -80,9 +80,14 @@ public class WindowController implements Initializable {
     private void addListener() {
         search_btn.setOnAction(actionEvent -> {
             try {
-                String city = Model.getInstance().getApiDriver().getCityLatAndLong(search_fld.getText());
-                System.out.println(city);
+                Model.getInstance().getApiDriver().setCityLatAndLong(search_fld.getText());
             } catch (JsonProcessingException | ParseException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                Model.getInstance().getApiDriver().getWeather();
+                System.out.println(Model.getInstance().getApiDriver().getWeather());
+            } catch (ParseException | JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
         });

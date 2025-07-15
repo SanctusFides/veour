@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Configured the app to load a welcome page, currently working on retrieving a geo look up for city and state to retrieve lat and long for weather search.">
+    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Have the text field trimming and now sorting through the results for a city and state match and returns lat and long">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/APIDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/APIDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752528593503</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Have the text field trimming and now sorting through the results for a city and state match and returns lat and long">
+      <option name="closed" value="true" />
+      <created>1752531700466</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1752531700466</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -341,6 +351,7 @@
     <MESSAGE value="Added in the wind direction and speed to the forecast card. Created functions to turn their response into cardinal direction arrow pngs." />
     <MESSAGE value="Last save point before adding in city based searching using the text field." />
     <MESSAGE value="Configured the app to load a welcome page, currently working on retrieving a geo look up for city and state to retrieve lat and long for weather search." />
-    <option name="LAST_COMMIT_MESSAGE" value="Configured the app to load a welcome page, currently working on retrieving a geo look up for city and state to retrieve lat and long for weather search." />
+    <MESSAGE value="Have the text field trimming and now sorting through the results for a city and state match and returns lat and long" />
+    <option name="LAST_COMMIT_MESSAGE" value="Have the text field trimming and now sorting through the results for a city and state match and returns lat and long" />
   </component>
 </project>
