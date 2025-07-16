@@ -11,8 +11,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.json.simple.parser.ParseException;
 
-
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -25,20 +23,7 @@ public class WindowController implements Initializable {
     private Button search_btn;
     @FXML
     private HBox weather_panel_main;
-    @FXML
-    private VBox day1;
-    @FXML
-    private VBox day2;
-    @FXML
-    private VBox day3;
-    @FXML
-    private VBox day4;
-    @FXML
-    private VBox day5;
-    @FXML
-    private VBox day6;
-    @FXML
-    private VBox day7;
+
 
     VBox[] week;
 
@@ -79,17 +64,19 @@ public class WindowController implements Initializable {
 
     private void addListener() {
         search_btn.setOnAction(actionEvent -> {
+//          First use the geo-fetching API to convert city,state names into lat and long in the API Driver
             try {
                 Model.getInstance().getApiDriver().setCityLatAndLong(search_fld.getText());
             } catch (JsonProcessingException | ParseException e) {
                 throw new RuntimeException(e);
             }
+//          API Driver will now use the lat and long set above to fetch the weather for that weather.
             try {
                 Model.getInstance().getApiDriver().getWeather();
-                System.out.println(Model.getInstance().getApiDriver().getWeather());
             } catch (ParseException | JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
+            showForecast();
         });
     }
 

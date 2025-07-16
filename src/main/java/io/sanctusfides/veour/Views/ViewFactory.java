@@ -10,22 +10,18 @@ public class ViewFactory {
 
     private HBox weatherPanel;
 
-/*
-    SHOW SECTION
-    this section is for methods that push the created views to user
-*/
+
+
     // Main window container for the app that opens on launch and houses the center and top panels
     public void showWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Window.fxml"));
-//        WindowController controller = new WindowController();
-//        loader.setController(controller);
         createStage(loader);
     }
 
-/*
-    CREATION SECTION
-    this section is for methods that create Views and View elements
-*/
+    public void showWeather() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/"));
+    }
+
 
 
     // reusable method to create the stage, used in the Show section

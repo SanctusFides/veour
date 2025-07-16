@@ -69,7 +69,6 @@ public final class Utility {
         return image;
     }
 
-
     public static String mapWeatherCodeToWeatherDescr(String code) {
         return switch (code) {
             case "0" -> "Clear Sky";

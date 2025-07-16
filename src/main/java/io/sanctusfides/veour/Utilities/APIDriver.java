@@ -1,8 +1,10 @@
-package io.sanctusfides.veour.Models;
+package io.sanctusfides.veour.Utilities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.sanctusfides.veour.Models.Forecast;
+import io.sanctusfides.veour.Models.Model;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -16,7 +18,6 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import static io.sanctusfides.veour.Utilities.Utility.mapWeatherCodeToWeatherDescr;
-
 
 public class APIDriver {
 
@@ -42,21 +43,21 @@ public class APIDriver {
     }
 
 //  Takes network response and converts it into a json to use get methods on
-    private Object convertHttpToJson(HttpResponse<String> response) throws ParseException {
+    private Object convertHttpToObject(HttpResponse<String> response) throws ParseException {
         JSONParser parser = new JSONParser();
         return parser.parse(response.body());
     }
 
 //  Takes the JSON and a string and retrieves the requested parent section from the JSON - needed for nested sections
-    private JsonNode mapToJsonNodes(Object weather,String jsonParent) throws JsonProcessingException {
+    private JsonNode mapObjectToJsonNode(Object weather, String jsonParent) throws JsonProcessingException {
         JsonNode node = mapper.readTree(String.valueOf(weather));
         return node.get(jsonParent);
     }
 
 //  Now that the request has been parsed for the relevant sections, the values are retrieved and returned attached to model
     private Forecast[] convertJsonToWeekForecast(Object weather) throws JsonProcessingException {
-        JsonNode currentNode = mapToJsonNodes(weather, "current");
-        JsonNode dailyNode = mapToJsonNodes(weather,"daily");
+        JsonNode currentNode = mapObjectToJsonNode(weather, "current");
+        JsonNode dailyNode = mapObjectToJsonNode(weather,"daily");
 
         JsonNode timeNode = dailyNode.get("time");
         JsonNode avgTempNode = dailyNode.get("temperature_2m_mean");
@@ -113,47 +114,35 @@ public class APIDriver {
         return week;
     }
 
-//    public Forecast[] getWeather(URI url) throws ParseException, JsonProcessingException {
-//        HttpResponse<String> request = null;
-//        try {
-//            request = handleRequest(url);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        assert request != null;
-//        Object weatherJSON = convertHttpToJson(request);
-//        return convertJsonToWeekForecast(weatherJSON);
-//    }
     public Forecast[] getWeather() throws ParseException, JsonProcessingException {
         HttpResponse<String> request = null;
         try {
-//            request = handleRequest(url);
             request = handleRequest(createAPIURL());
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         assert request != null;
-        Object weatherJSON = convertHttpToJson(request);
-        System.out.println(weatherJSON);
-        return convertJsonToWeekForecast(weatherJSON);
+        Object weatherJSON = convertHttpToObject(request);
+        Forecast[] forecast = convertJsonToWeekForecast(weatherJSON);
+        Model.getInstance().setWeeklyForecast(forecast);
+        return forecast;
     }
 
+//  Set the lat and long variables in this class for the weather api to use when fetching the forecast
     public void setCityLatAndLong(String userCityInput) throws JsonProcessingException, ParseException {
         HttpResponse<String> request = null;
         if (!userCityInput.isEmpty()) {
             String userCityName = userCityInput.substring(0,userCityInput.indexOf(",")).toLowerCase();
             String userStateName = userCityInput.substring(userCityInput.indexOf(",")+1).trim().toLowerCase();
             try {
-
                 URI cityUrl = URI.create("https://geocoding-api.open-meteo.com/v1/search?name=" + userCityName + "&count=10&language=en&format=json");
                 request = handleRequest(cityUrl);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             assert request != null;
-            Object parsedResult = convertHttpToJson(request);
-            JsonNode cityJson = mapToJsonNodes(parsedResult, "results");
+            Object parsedResult = convertHttpToObject(request);
+            JsonNode cityJson = mapObjectToJsonNode(parsedResult, "results");
 
             cityJson.forEach(local -> {
                 if (local.get("name").asText().toLowerCase().equals(userCityName) && local.get("admin1").asText().toLowerCase().equals(userStateName)) {

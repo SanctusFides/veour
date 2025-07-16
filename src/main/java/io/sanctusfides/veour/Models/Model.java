@@ -3,10 +3,9 @@ package io.sanctusfides.veour.Models;
 
 import io.sanctusfides.veour.Controllers.ForecastCellController;
 import io.sanctusfides.veour.Exceptions.DayOutOfBoundsException;
-import io.sanctusfides.veour.Factories.ForecastCellFactory;
+import io.sanctusfides.veour.Views.ForecastCellFactory;
+import io.sanctusfides.veour.Utilities.APIDriver;
 import io.sanctusfides.veour.Views.ViewFactory;
-
-import java.net.URISyntaxException;
 
 public class Model {
 
@@ -16,7 +15,7 @@ public class Model {
     private final ForecastCellController forecastCellController;
     private final APIDriver apiDriver;
 
-    private final Forecast[] weeklyForecast;
+    private Forecast[] weeklyForecast;
 
     private Model() {
        this.viewFactory = new ViewFactory();
@@ -25,8 +24,11 @@ public class Model {
        this.apiDriver = new APIDriver();
 
        this.weeklyForecast = new Forecast[7];
-//       loadWeather();
     }
+
+//    TODO find the right place for the setWeekDay() funct. This is required for loading in the weather on the panel
+
+//       loadWeather();
 //
 //    private void loadWeather() {
 //        try {
@@ -42,7 +44,6 @@ public class Model {
 //        }
 //    }
 
-
     public static synchronized Model getInstance() {
         if (model == null) {
             model = new Model();
@@ -53,13 +54,17 @@ public class Model {
     public Forecast[] getWeeklyForecast() {
         return weeklyForecast;
     }
+    public void setWeeklyForecast(Forecast[] week) {
+        this.weeklyForecast = week;
+    }
+
     public Forecast getWeekDay(int dayCount) throws DayOutOfBoundsException {
         if(dayCount > 6 || dayCount < 0) {
             throw (new DayOutOfBoundsException("Day value used to retrieve forecast was not value"));
         }
         return weeklyForecast[dayCount];
     }
-    private void setWeekDay(int dayCount,Forecast forecast) {
+    public void setWeekDay(int dayCount,Forecast forecast) {
         weeklyForecast[dayCount] = forecast;
     }
 
