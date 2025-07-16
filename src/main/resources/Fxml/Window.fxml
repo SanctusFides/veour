@@ -2,13 +2,14 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="700.0" prefWidth="1260.0" styleClass="main_window" stylesheets="@../Styles/Window.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="700.0" prefWidth="1260.0" styleClass="main_window" stylesheets="@../Styles/Window.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:id="window_parent">
     <top>
         <fx:include source="TopPanel.fxml" />
     </top>
 
     <center>
-<!--        <fx:include source="WeatherPanel.fxml" />-->
         <fx:include source="WelcomePanel.fxml" />
     </center>
 

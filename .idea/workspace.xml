@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Combined the Geo and Weather APIs. Now when the button is pressed, it searches for the city, state for lat/long and then fetches weather response. Now to swap the central panel view with the forecast after">
+    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Refactored a bit for the new flow. Will now start looking into how to swap out the welcome panel with the forecast panel. Having trouble supporting multiple fxmls under 1 controller.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WeatherPanelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Factories/ForecastCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ForecastCellFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/APIDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/APIDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/Utility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/WeatherPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/WeatherPanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/WelcomePanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/WelcomePanel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Window.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +25,7 @@
       <list>
         <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -338,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752617434727</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Refactored a bit for the new flow. Will now start looking into how to swap out the welcome panel with the forecast panel. Having trouble supporting multiple fxmls under 1 controller.">
+      <option name="closed" value="true" />
+      <created>1752691458583</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1752691458583</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -363,6 +374,7 @@
     <MESSAGE value="Configured the app to load a welcome page, currently working on retrieving a geo look up for city and state to retrieve lat and long for weather search." />
     <MESSAGE value="Have the text field trimming and now sorting through the results for a city and state match and returns lat and long" />
     <MESSAGE value="Combined the Geo and Weather APIs. Now when the button is pressed, it searches for the city, state for lat/long and then fetches weather response. Now to swap the central panel view with the forecast after" />
-    <option name="LAST_COMMIT_MESSAGE" value="Combined the Geo and Weather APIs. Now when the button is pressed, it searches for the city, state for lat/long and then fetches weather response. Now to swap the central panel view with the forecast after" />
+    <MESSAGE value="Refactored a bit for the new flow. Will now start looking into how to swap out the welcome panel with the forecast panel. Having trouble supporting multiple fxmls under 1 controller." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored a bit for the new flow. Will now start looking into how to swap out the welcome panel with the forecast panel. Having trouble supporting multiple fxmls under 1 controller." />
   </component>
 </project>

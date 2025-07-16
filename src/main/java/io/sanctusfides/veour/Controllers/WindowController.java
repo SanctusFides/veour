@@ -1,83 +1,18 @@
 package io.sanctusfides.veour.Controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import io.sanctusfides.veour.Models.Model;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import org.json.simple.parser.ParseException;
+import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class WindowController implements Initializable {
 
-    @FXML
-    private TextField search_fld;
-    @FXML
-    private Button search_btn;
-    @FXML
-    private HBox weather_panel_main;
-
-
-    VBox[] week;
-
-    int dayCount;
-
-//  VBox array above for Week is designed to allow you to pull out a specific day in (0 through 6) to alter if needed.
-//  Array  is created and as each day element is loaded, it adds one into the week array so that we can retrieve it within
-//  the same loop
+    public BorderPane window_parent;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        week = new VBox[7];
-        addListener();
-    }
 
-    private void showForecast() {
-        dayCount = 0;
-        try {
-            for (int i = 0; i < Model.getInstance().getWeeklyForecast().length; i++) {
-//              Create the forecast cell GUI element from the FXML
-                VBox forecastCell = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/ForecastCell.fxml")));
-
-//              Add VBox element to array, which allows us to iterate through the individual days in this loop to set
-//              other things like onClick. This is just a port for future options - currently not used
-                week[i] = forecastCell;
-
-//              Finally with data stored, we can now load the data onto the blank template to present the values to user
-                Model.getInstance().getForecastCellFactory().buildForecastElement(forecastCell, Model.getInstance().getWeekDay(i), dayCount);
-
-//              The last step is attach all the data-loaded elements onto the panel's main view
-                weather_panel_main.getChildren().add(forecastCell);
-                dayCount++;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void addListener() {
-        search_btn.setOnAction(actionEvent -> {
-//          First use the geo-fetching API to convert city,state names into lat and long in the API Driver
-            try {
-                Model.getInstance().getApiDriver().setCityLatAndLong(search_fld.getText());
-            } catch (JsonProcessingException | ParseException e) {
-                throw new RuntimeException(e);
-            }
-//          API Driver will now use the lat and long set above to fetch the weather for that weather.
-            try {
-                Model.getInstance().getApiDriver().getWeather();
-            } catch (ParseException | JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
-            showForecast();
-        });
     }
 
 

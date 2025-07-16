@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="100.0" prefWidth="1260.0" styleClass="top_menu_container" stylesheets="@../Styles/TopMenu.css"
             xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="io.sanctusfides.veour.Controllers.WindowController"
+            fx:controller="io.sanctusfides.veour.Controllers.TopMenuController"
 >
    <HBox alignment="CENTER" layoutX="383.0" layoutY="1.0" prefHeight="100.0" prefWidth="495.0">
       <Label fx:id="search_lbl" text="Enter Your Location" textFill="WHITE" />

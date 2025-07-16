@@ -1,5 +1,6 @@
 package io.sanctusfides.veour.Views;
 
+import io.sanctusfides.veour.Controllers.WindowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -8,21 +9,28 @@ import javafx.stage.Stage;
 
 public class ViewFactory {
 
-    private HBox weatherPanel;
-
+    private HBox topMenu;
+    private HBox forecastView;
 
 
     // Main window container for the app that opens on launch and houses the center and top panels
     public void showWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Window.fxml"));
+        WindowController controller = new WindowController();
+        loader.setController(controller);
         createStage(loader);
     }
 
-    public void showWeather() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/"));
+    public HBox getForecastView() {
+        if (forecastView == null) {
+            try {
+                forecastView = new FXMLLoader(getClass().getResource("/Fxml/WeatherPanel.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return forecastView;
     }
-
-
 
     // reusable method to create the stage, used in the Show section
     private void createStage(FXMLLoader loader) {
@@ -39,9 +47,7 @@ public class ViewFactory {
         stage.setResizable(false);
         stage.show();
     }
-/*
-    GENERAL UTILITY SECTION
-*/
+
     public void closeStage(Stage stage) {
         stage.close();
     }
