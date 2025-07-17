@@ -22,10 +22,14 @@ public class WeatherPanelController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         week = new VBox[7];
+        try {
+            showForecast();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-
-    private void showForecast() throws IOException {
+    public void showForecast() throws IOException {
         dayCount = 0;
         try {
             for (int i = 0; i < Model.getInstance().getWeeklyForecast().length; i++) {

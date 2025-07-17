@@ -1,7 +1,5 @@
 package io.sanctusfides.veour.Models;
 
-
-import io.sanctusfides.veour.Controllers.ForecastCellController;
 import io.sanctusfides.veour.Exceptions.DayOutOfBoundsException;
 import io.sanctusfides.veour.Views.ForecastCellFactory;
 import io.sanctusfides.veour.Utilities.APIDriver;
@@ -12,7 +10,6 @@ public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
     private final ForecastCellFactory forecastCellFactory;
-    private final ForecastCellController forecastCellController;
     private final APIDriver apiDriver;
 
     private Forecast[] weeklyForecast;
@@ -20,29 +17,11 @@ public class Model {
     private Model() {
        this.viewFactory = new ViewFactory();
        this.forecastCellFactory = new ForecastCellFactory();
-       this.forecastCellController = new ForecastCellController();
        this.apiDriver = new APIDriver();
 
        this.weeklyForecast = new Forecast[7];
     }
 
-//    TODO find the right place for the setWeekDay() funct. This is required for loading in the weather on the panel
-
-//       loadWeather();
-//
-//    private void loadWeather() {
-//        try {
-//            URI houstonTestURL = new URI("https://api.open-meteo.com/v1/forecast?latitude=29.7633&longitude=-95.3633&daily=temperature_2m_max,temperature_2m_min,rain_sum,showers_sum,weather_code,temperature_2m_mean,precipitation_probability_mean,relative_humidity_2m_mean,apparent_temperature_mean,wind_direction_10m_dominant,wind_speed_10m_mean&current=temperature_2m,precipitation,relative_humidity_2m,apparent_temperature,weather_code,rain,showers,wind_speed_10m,wind_direction_10m&timezone=America%2FChicago&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch");
-//
-////          Load the weeks worth of forecasts
-//            Forecast[] weather = apiDriver.getWeather(houstonTestURL);
-//            for (int i = 0; i < weeklyForecast.length; i++) {
-//                setWeekDay(i,weather[i]);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     public static synchronized Model getInstance() {
         if (model == null) {
@@ -64,16 +43,11 @@ public class Model {
         }
         return weeklyForecast[dayCount];
     }
-    public void setWeekDay(int dayCount,Forecast forecast) {
-        weeklyForecast[dayCount] = forecast;
-    }
 
     public ViewFactory getViewFactory() {
         return viewFactory;
     }
-    public ForecastCellController getForecastCellController() {
-        return forecastCellController;
-    }
+
     public APIDriver getApiDriver() {
         return apiDriver;
     }

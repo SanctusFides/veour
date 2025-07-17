@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Refactored a bit for the new flow. Will now start looking into how to swap out the welcome panel with the forecast panel. Having trouble supporting multiple fxmls under 1 controller.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WeatherPanelController.java" afterDir="false" />
+    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Now that panels need to start flowing right, I've corrected the structure for the Window and views. Controllers correctly created for top menu &amp; weather panel now and removed the logic for each from the window controller.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewOptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/LoadingPanel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WeatherPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WeatherPanelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/WeatherPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/WeatherPanel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/WelcomePanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/WelcomePanel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Window.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,7 @@
         <option value="FxmlFile" />
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -66,20 +67,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/John1/Code/Veour/veour/src/main/resources/Images/Arrows&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/John1/Code/Veour/veour/src/main/resources/Fxml"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\John1\Code\Veour\veour\src\main\resources\Fxml" />
       <recent name="C:\Users\John1\Code\Veour\veour\src\main\resources\Images\Arrows" />
       <recent name="C:\Users\John1\Code\Veour\veour\src\main\resources\Images" />
     </key>
@@ -349,7 +351,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752691458583</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Now that panels need to start flowing right, I've corrected the structure for the Window and views. Controllers correctly created for top menu &amp; weather panel now and removed the logic for each from the window controller.">
+      <option name="closed" value="true" />
+      <created>1752702266824</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1752702266824</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -375,6 +385,7 @@
     <MESSAGE value="Have the text field trimming and now sorting through the results for a city and state match and returns lat and long" />
     <MESSAGE value="Combined the Geo and Weather APIs. Now when the button is pressed, it searches for the city, state for lat/long and then fetches weather response. Now to swap the central panel view with the forecast after" />
     <MESSAGE value="Refactored a bit for the new flow. Will now start looking into how to swap out the welcome panel with the forecast panel. Having trouble supporting multiple fxmls under 1 controller." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored a bit for the new flow. Will now start looking into how to swap out the welcome panel with the forecast panel. Having trouble supporting multiple fxmls under 1 controller." />
+    <MESSAGE value="Now that panels need to start flowing right, I've corrected the structure for the Window and views. Controllers correctly created for top menu &amp; weather panel now and removed the logic for each from the window controller." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now that panels need to start flowing right, I've corrected the structure for the Window and views. Controllers correctly created for top menu &amp; weather panel now and removed the logic for each from the window controller." />
   </component>
 </project>
