@@ -10,12 +10,8 @@ import org.json.simple.parser.ParseException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 import static io.sanctusfides.veour.Utilities.Utility.mapWeatherCodeToWeatherDescr;
 
@@ -30,17 +26,6 @@ public class APIDriver {
         this.mapper = new ObjectMapper();
     }
 
-//  Makes the network request to the API url and passes along the response to be converted into JSON for parsing
-    private HttpResponse<String> handleRequest(URI url) throws Exception {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(url)
-                .timeout(Duration.of(10, ChronoUnit.SECONDS))
-                .GET()
-                .build();
-        HttpClient client = HttpClient.newHttpClient();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        return response;
-    }
 
 //  Takes network response and converts it into a json to use get methods on
     private Object convertHttpToObject(HttpResponse<String> response) throws ParseException {
@@ -114,14 +99,15 @@ public class APIDriver {
         return week;
     }
 
-    public Forecast[] getWeather() throws ParseException, JsonProcessingException {
+    public Forecast[] getWeather() throws Exception {
         HttpResponse<String> request = null;
-        try {
-            request = handleRequest(createAPIURL());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        RequestTask requestTask = new RequestTask(createWeatherAPIURL());
+        Thread thread = new Thread(requestTask);
+        thread.start();
+        request = requestTask.call();
         assert request != null;
+
         Object weatherJSON = convertHttpToObject(request);
         Forecast[] forecast = convertJsonToWeekForecast(weatherJSON);
         Model.getInstance().setWeeklyForecast(forecast);
@@ -129,31 +115,35 @@ public class APIDriver {
     }
 
 //  Set the lat and long variables in this class for the weather api to use when fetching the forecast
-    public void setCityLatAndLong(String userCityInput) throws JsonProcessingException, ParseException {
+    public void setCityLatAndLong(String userCityInput) throws Exception {
         HttpResponse<String> request = null;
         if (!userCityInput.isEmpty()) {
-            String userCityName = userCityInput.substring(0,userCityInput.indexOf(",")).toLowerCase();
-            String userStateName = userCityInput.substring(userCityInput.indexOf(",")+1).trim().toLowerCase();
-            try {
-                URI cityUrl = URI.create("https://geocoding-api.open-meteo.com/v1/search?name=" + userCityName + "&count=10&language=en&format=json");
-                request = handleRequest(cityUrl);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            String userCityName = userCityInput.substring(0,userCityInput.indexOf(",")).toLowerCase().replace(" ","+");
+            String userStateName = userCityInput.substring(userCityInput.indexOf(",")+1).trim().toLowerCase().replace(" ","+");
+            URI cityUrl = createCityAPIURL(userCityName);
+
+            RequestTask requestTask = new RequestTask(cityUrl);
+            Thread thread = new Thread(requestTask);
+            thread.start();
+            request = requestTask.call();
             assert request != null;
+
             Object parsedResult = convertHttpToObject(request);
             JsonNode cityJson = mapObjectToJsonNode(parsedResult, "results");
-
             cityJson.forEach(local -> {
-                if (local.get("name").asText().toLowerCase().equals(userCityName) && local.get("admin1").asText().toLowerCase().equals(userStateName)) {
-                    setLatitude(local.get("latitude").asText());
-                    setLongitude(local.get("longitude").asText());
+                if (local.get("name") != null && local.get("admin1") != null) {
+                    String formattedCity = local.get("name").asText().toLowerCase().replace(" ","+");
+                    String formattedState = local.get("admin1").asText().toLowerCase().replace(" ","+");
+                    if (formattedCity.equals(userCityName) && formattedState.equals(userStateName)) {
+                        setLatitude(local.get("latitude").asText());
+                        setLongitude(local.get("longitude").asText());
+                    }
                 }
             });
         }
     }
 
-    private URI createAPIURL() throws URISyntaxException {
+    private URI createWeatherAPIURL() throws URISyntaxException {
         return new URI("https://api.open-meteo.com/v1/forecast?latitude=" +
                 latitude+"&longitude="+longitude+
                 "&daily=temperature_2m_max,temperature_2m_min,rain_sum,showers_sum,weather_code,temperature_2m_mean," +
@@ -163,6 +153,11 @@ public class APIDriver {
                 "&timezone=America%2FChicago&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch");
     }
 
+    private URI createCityAPIURL(String cityName) throws URISyntaxException {
+        return new URI("https://geocoding-api.open-meteo.com/v1/search?name="
+                + cityName + "&count=100&language=en&format=json");
+    }
+
     private void setLatitude(String latitude) {
         this.latitude = latitude;
     }
@@ -170,4 +165,14 @@ public class APIDriver {
     private void setLongitude(String longitude) {
         this.longitude = longitude;
     }
+
+//    private HttpResponse<String> handleRequest(URI url) throws Exception {
+//        HttpRequest request = HttpRequest.newBuilder()
+//                .uri(url)
+//                .timeout(Duration.of(10, ChronoUnit.SECONDS))
+//                .GET()
+//                .build();
+//        HttpClient client = HttpClient.newHttpClient();
+//        return client.send(request, HttpResponse.BodyHandlers.ofString());
+//    }
 }
