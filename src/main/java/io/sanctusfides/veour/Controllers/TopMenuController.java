@@ -25,17 +25,10 @@ public class TopMenuController implements Initializable {
     }
 
 
-    public void loadWeather() {
+    public void loadWeather() throws Exception {
+//          Display the loading screen
         Model.getInstance().getViewFactory().getSelectedView().set(ViewOptions.LOADING);
-        try {
-//              First use the geo-fetching API to convert city,state names into lat and long in the API Driver
-            Model.getInstance().getApiDriver().setCityLatAndLong(search_fld.getText());
-//              API Driver will now use the lat and long set above to fetch the weather for that weather.
-            Model.getInstance().getApiDriver().getWeather();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            Model.getInstance().getViewFactory().getSelectedView().set(ViewOptions.WEATHER);
-        }
+//          Uses the user search results to look up lat&long to use for fetching their weather then displays forecast
+        Model.getInstance().getApiDriver().loadWeather(search_fld.getText());
     }
 }

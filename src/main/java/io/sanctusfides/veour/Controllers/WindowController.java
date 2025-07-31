@@ -16,15 +16,28 @@ public class WindowController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        window_parent.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
 
         Model.getInstance().getViewFactory().getSelectedView().addListener(((observableValue, oldVal, newVal) -> {
             switch (newVal) {
-                case LOADING -> window_parent.setCenter(Model.getInstance().getViewFactory().getLoadingView());
-                case WEATHER -> window_parent.setCenter(Model.getInstance().getViewFactory().getForecastView());
-                default -> window_parent.setCenter(Model.getInstance().getViewFactory().getWelcomeView());
+                case LOADING -> displayLoading();
+                case WEATHER -> displayWeather();
+                default -> displayWelcome();
             }
         }));
-        window_parent.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+    }
+
+    public void displayLoading() {
+        System.out.println("Loading Screen Triggered");
+        window_parent.setCenter(Model.getInstance().getViewFactory().getLoadingView());
+    }
+
+    public void displayWeather() {
+        window_parent.setCenter(Model.getInstance().getViewFactory().getForecastView());
+    }
+
+    public void displayWelcome() {
+        window_parent.setCenter(Model.getInstance().getViewFactory().getWelcomeView());
     }
 
 

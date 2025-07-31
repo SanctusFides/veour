@@ -26,21 +26,49 @@ public class APIDriver {
         this.mapper = new ObjectMapper();
     }
 
+//  Initiates the process - first setting the lat and long and once that is done, it will trigger getWeather
+    public void loadWeather(String userCityInput) throws Exception {
+        setCityLatAndLong(userCityInput);
+    }
+
+
+    //  Set the lat and long variables in this class for the weather api to use when fetching the forecast
+    public void setCityLatAndLong(String userCityInput) throws Exception {
+        if (!userCityInput.isEmpty()) {
+            String userCityName = userCityInput.substring(0,userCityInput.indexOf(",")).toLowerCase().replace(" ","+");
+            String userStateName = userCityInput.substring(userCityInput.indexOf(",")+1).trim().toLowerCase().replace(" ","+");
+            URI cityUrl = createCityAPIURL(userCityName);
+
+            FetchLatLongTask task = new FetchLatLongTask(cityUrl,userCityName,userStateName);
+            Thread thread = new Thread(task);
+            thread.setDaemon(true);
+            thread.start();
+        }
+    }
+//  Sets the weekly forecast array held in the Model - this funct auto runs when setCityLatAndLong succeeds.
+    public void getWeather() throws Exception {
+        FetchWeatherTask task = new FetchWeatherTask(createWeatherAPIURL());
+        Thread thread = new Thread(task);
+        thread.setDaemon(true);
+        thread.start();
+
+        Model.getInstance().getWeeklyForecast();
+    }
 
 //  Takes network response and converts it into a json to use get methods on
-    private Object convertHttpToObject(HttpResponse<String> response) throws ParseException {
+    public Object convertHttpToObject(HttpResponse<String> response) throws ParseException {
         JSONParser parser = new JSONParser();
         return parser.parse(response.body());
     }
 
 //  Takes the JSON and a string and retrieves the requested parent section from the JSON - needed for nested sections
-    private JsonNode mapObjectToJsonNode(Object weather, String jsonParent) throws JsonProcessingException {
+    public JsonNode mapObjectToJsonNode(Object weather, String jsonParent) throws JsonProcessingException {
         JsonNode node = mapper.readTree(String.valueOf(weather));
         return node.get(jsonParent);
     }
 
 //  Now that the request has been parsed for the relevant sections, the values are retrieved and returned attached to model
-    private Forecast[] convertJsonToWeekForecast(Object weather) throws JsonProcessingException {
+    public Forecast[] convertJsonToWeekForecast(Object weather) throws JsonProcessingException {
         JsonNode currentNode = mapObjectToJsonNode(weather, "current");
         JsonNode dailyNode = mapObjectToJsonNode(weather,"daily");
 
@@ -64,7 +92,7 @@ public class APIDriver {
     }
 
 //  Handles the actual building of forecast - adhering to the single responsibility principal
-    private Forecast[] buildWeekForecast(JsonNode currentNode, JsonNode timeNode, JsonNode avgTempNode,
+    public Forecast[] buildWeekForecast(JsonNode currentNode, JsonNode timeNode, JsonNode avgTempNode,
                                          JsonNode maxTempNode, JsonNode minTempNode, JsonNode feelsLikeTempNode,
                                          JsonNode humidtyNode, JsonNode precipNode, JsonNode weathCodeNode,
                                          JsonNode windDirection, JsonNode windSpeed) {
@@ -99,49 +127,6 @@ public class APIDriver {
         return week;
     }
 
-    public Forecast[] getWeather() throws Exception {
-        HttpResponse<String> request = null;
-
-        RequestTask requestTask = new RequestTask(createWeatherAPIURL());
-        Thread thread = new Thread(requestTask);
-        thread.start();
-        request = requestTask.call();
-        assert request != null;
-
-        Object weatherJSON = convertHttpToObject(request);
-        Forecast[] forecast = convertJsonToWeekForecast(weatherJSON);
-        Model.getInstance().setWeeklyForecast(forecast);
-        return forecast;
-    }
-
-//  Set the lat and long variables in this class for the weather api to use when fetching the forecast
-    public void setCityLatAndLong(String userCityInput) throws Exception {
-        HttpResponse<String> request = null;
-        if (!userCityInput.isEmpty()) {
-            String userCityName = userCityInput.substring(0,userCityInput.indexOf(",")).toLowerCase().replace(" ","+");
-            String userStateName = userCityInput.substring(userCityInput.indexOf(",")+1).trim().toLowerCase().replace(" ","+");
-            URI cityUrl = createCityAPIURL(userCityName);
-
-            RequestTask requestTask = new RequestTask(cityUrl);
-            Thread thread = new Thread(requestTask);
-            thread.start();
-            request = requestTask.call();
-            assert request != null;
-
-            Object parsedResult = convertHttpToObject(request);
-            JsonNode cityJson = mapObjectToJsonNode(parsedResult, "results");
-            cityJson.forEach(local -> {
-                if (local.get("name") != null && local.get("admin1") != null) {
-                    String formattedCity = local.get("name").asText().toLowerCase().replace(" ","+");
-                    String formattedState = local.get("admin1").asText().toLowerCase().replace(" ","+");
-                    if (formattedCity.equals(userCityName) && formattedState.equals(userStateName)) {
-                        setLatitude(local.get("latitude").asText());
-                        setLongitude(local.get("longitude").asText());
-                    }
-                }
-            });
-        }
-    }
 
     private URI createWeatherAPIURL() throws URISyntaxException {
         return new URI("https://api.open-meteo.com/v1/forecast?latitude=" +
@@ -158,21 +143,11 @@ public class APIDriver {
                 + cityName + "&count=100&language=en&format=json");
     }
 
-    private void setLatitude(String latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    private void setLongitude(String longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
-
-//    private HttpResponse<String> handleRequest(URI url) throws Exception {
-//        HttpRequest request = HttpRequest.newBuilder()
-//                .uri(url)
-//                .timeout(Duration.of(10, ChronoUnit.SECONDS))
-//                .GET()
-//                .build();
-//        HttpClient client = HttpClient.newHttpClient();
-//        return client.send(request, HttpResponse.BodyHandlers.ofString());
-//    }
 }

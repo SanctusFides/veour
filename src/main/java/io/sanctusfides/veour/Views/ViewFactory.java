@@ -18,6 +18,7 @@ public class ViewFactory {
     private HBox forecastView;
     private HBox loadingView;
 
+
     public ViewFactory() {
         this.selectedView = new SimpleObjectProperty<>();
     }
