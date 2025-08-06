@@ -5,12 +5,15 @@ import io.sanctusfides.veour.Views.ForecastCellFactory;
 import io.sanctusfides.veour.Utilities.APIDriver;
 import io.sanctusfides.veour.Views.ViewFactory;
 
+import java.util.Collection;
+
 public class Model {
 
     private static Model model;
     private final ViewFactory viewFactory;
     private final ForecastCellFactory forecastCellFactory;
     private final APIDriver apiDriver;
+    private Collection<String> cities;
 
     private Forecast[] weeklyForecast;
 
@@ -51,7 +54,15 @@ public class Model {
     public APIDriver getApiDriver() {
         return apiDriver;
     }
+
     public ForecastCellFactory getForecastCellFactory(){
         return forecastCellFactory;
+    }
+
+    public void setCities(Collection<String> cities) {
+        this.cities = cities;
+    }
+    public Collection<String> getCities() {
+        return cities;
     }
 }

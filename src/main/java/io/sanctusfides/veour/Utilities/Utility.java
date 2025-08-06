@@ -1,7 +1,13 @@
 package io.sanctusfides.veour.Utilities;
 
+import io.sanctusfides.veour.Models.Model;
 import javafx.scene.image.Image;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Objects;
 
 public final class Utility {
@@ -94,5 +100,14 @@ public final class Utility {
             case "96", "99" -> "Hail Thunderstorms";
             default -> "error";
         };
+    }
+
+    public void loadCityList() {
+        try {
+            List<String> cities = Files.readAllLines(Paths.get(Objects.requireNonNull(getClass().getResource("/Files/locations.txt")).toURI()));
+            Model.getInstance().setCities(cities);
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }

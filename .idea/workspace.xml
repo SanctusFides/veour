@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Swapped http calls to threads. Still not displaying loading interstitial but working to resolve with some clutter fixed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/FetchLatLongTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/FetchWeatherTask.java" afterDir="false" />
+    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Finally found the solution for the loading screen. Reworked the flow of code to use threads now and unblocked the GUI. Loading works perfectly now.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/APIDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/APIDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/RequestTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/FetchWeatherTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/FetchWeatherTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/Utility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +123,7 @@
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.sanctusfides.veour.App" />
       <module name="veour" />
+      <option name="VM_PARAMETERS" value="--add-exports=javafx.base/com.sun.javafx.event=org.controlsfx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="io.sanctusfides.veour.*" />
@@ -374,11 +373,18 @@
       <option name="project" value="LOCAL" />
       <updated>1753818264466</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Finally found the solution for the loading screen. Reworked the flow of code to use threads now and unblocked the GUI. Loading works perfectly now.">
+      <option name="closed" value="true" />
+      <created>1753999848283</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1753999848283</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Project initializing and structure set" />
     <MESSAGE value="Base foundation created to launch blank window - ready for GUI styling and design" />
     <MESSAGE value="Stiched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides" />
     <MESSAGE value="Stitched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides" />
@@ -403,6 +409,7 @@
     <MESSAGE value="Now that panels need to start flowing right, I've corrected the structure for the Window and views. Controllers correctly created for top menu &amp; weather panel now and removed the logic for each from the window controller." />
     <MESSAGE value="Now that the weather loads, we have an issue of the fetching of weather blocking the thread and not displaying loading panel. Ready to implement Task threading to resolve" />
     <MESSAGE value="Swapped http calls to threads. Still not displaying loading interstitial but working to resolve with some clutter fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Swapped http calls to threads. Still not displaying loading interstitial but working to resolve with some clutter fixed" />
+    <MESSAGE value="Finally found the solution for the loading screen. Reworked the flow of code to use threads now and unblocked the GUI. Loading works perfectly now." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally found the solution for the loading screen. Reworked the flow of code to use threads now and unblocked the GUI. Loading works perfectly now." />
   </component>
 </project>
