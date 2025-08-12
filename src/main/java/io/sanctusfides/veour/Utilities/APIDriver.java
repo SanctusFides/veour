@@ -33,19 +33,26 @@ public class APIDriver {
 
 
     //  Set the lat and long variables in this class for the weather api to use when fetching the forecast
-    public void setCityLatAndLong(String userCityInput) throws Exception {
-        if (!userCityInput.isEmpty()) {
-            String userCityName = userCityInput.substring(0,userCityInput.indexOf(",")).toLowerCase().replace(" ","+");
-            String userStateName = userCityInput.substring(userCityInput.indexOf(",")+1).trim().toLowerCase().replace(" ","+");
-            URI cityUrl = createCityAPIURL(userCityName);
+    private void setCityLatAndLong(String userInput) throws Exception {
 
-            FetchLatLongTask task = new FetchLatLongTask(cityUrl,userCityName,userStateName);
-            Thread thread = new Thread(task);
-            thread.setDaemon(true);
-            thread.start();
+//  TODO THIS IS WHERE WE SET A Model.get...SQLiteDriver.getLatLong() FUNCT WOULD GO THAT HANDLES SETTING THE LAT AND LONG THEN CALL getWeather
+
+        if (!userInput.isEmpty()) {
+            String userCityName = userInput.substring(0,userInput.indexOf(",")).toLowerCase().replace(" ","+");
+            String userStateName = userInput.substring(userInput.indexOf(",")+1).trim().toLowerCase().replace(" ","+");
+            String[] coordinates = Model.getInstance().getSqLiteDriver().getLatAndLong(userCityName,userStateName);
+
+
+//            Model.getInstance().getSqLiteDriver().deleteDB();
+//            Model.getInstance().getSqLiteDriver().buildDB();
+//            URI cityUrl = createCityAPIURL(userCityName);
+//            FetchLatLongTask task = new FetchLatLongTask(cityUrl,userCityName,userStateName);
+//            Thread thread = new Thread(task);
+//            thread.setDaemon(true);
+//            thread.start();
         }
     }
-//  Sets the weekly forecast array held in the Model - this funct auto runs when setCityLatAndLong succeeds.
+//  Sets the weekly forecast array held in the Model - this funct auto runs when setCityLatAndLong succeeds in FetchLatLongTask.java
     public void getWeather() throws Exception {
         FetchWeatherTask task = new FetchWeatherTask(createWeatherAPIURL());
         Thread thread = new Thread(task);

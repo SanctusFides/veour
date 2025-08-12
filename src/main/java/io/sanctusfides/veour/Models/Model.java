@@ -1,6 +1,7 @@
 package io.sanctusfides.veour.Models;
 
 import io.sanctusfides.veour.Exceptions.DayOutOfBoundsException;
+import io.sanctusfides.veour.Utilities.SQLiteDriver;
 import io.sanctusfides.veour.Views.ForecastCellFactory;
 import io.sanctusfides.veour.Utilities.APIDriver;
 import io.sanctusfides.veour.Views.ViewFactory;
@@ -13,6 +14,8 @@ public class Model {
     private final ViewFactory viewFactory;
     private final ForecastCellFactory forecastCellFactory;
     private final APIDriver apiDriver;
+    private final SQLiteDriver sqLiteDriver;
+
     private Collection<String> cities;
 
     private Forecast[] weeklyForecast;
@@ -21,6 +24,7 @@ public class Model {
        this.viewFactory = new ViewFactory();
        this.forecastCellFactory = new ForecastCellFactory();
        this.apiDriver = new APIDriver();
+       this.sqLiteDriver = new SQLiteDriver();
 
        this.weeklyForecast = new Forecast[7];
     }
@@ -64,5 +68,9 @@ public class Model {
     }
     public Collection<String> getCities() {
         return cities;
+    }
+
+    public SQLiteDriver getSqLiteDriver() {
+        return sqLiteDriver;
     }
 }

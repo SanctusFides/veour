@@ -28,7 +28,6 @@ public class WindowController implements Initializable {
     }
 
     public void displayLoading() {
-        System.out.println("Loading Screen Triggered");
         window_parent.setCenter(Model.getInstance().getViewFactory().getLoadingView());
     }
 

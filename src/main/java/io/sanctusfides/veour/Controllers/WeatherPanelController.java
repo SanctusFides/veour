@@ -1,6 +1,7 @@
 package io.sanctusfides.veour.Controllers;
 
 import io.sanctusfides.veour.Models.Model;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
@@ -13,6 +14,7 @@ import java.util.ResourceBundle;
 
 public class WeatherPanelController implements Initializable {
 
+    @FXML
     public HBox weather_panel_main;
 
     VBox[] week;

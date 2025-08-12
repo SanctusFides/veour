@@ -27,6 +27,7 @@ public class TopMenuController implements Initializable {
         Utility loader = new Utility();
         loader.loadCityList();
         TextFields.bindAutoCompletion(search_fld,Model.getInstance().getCities());
+//        Model.getInstance().getSqLiteDriver().buildDB();
     }
 
 

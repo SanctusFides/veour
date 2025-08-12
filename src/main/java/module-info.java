@@ -8,6 +8,7 @@ module io.sanctusfides.veour {
     requires jdk.jsobject;
     requires json.simple;
     requires com.fasterxml.jackson.databind;
+    requires java.sql;
 
     opens io.sanctusfides.veour to javafx.fxml;
     exports io.sanctusfides.veour;
