@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Created a SQLite DB to hold all cities data. This DB look up will replace the network call to get lat and long. This update will halve the network calls to make it faster">
-      <change afterPath="$PROJECT_DIR$/localdb.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/SQLiteDriver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Files/localdb.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Files/locations-ranked.txt" afterDir="false" />
+    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="SQLite server properly fetching lat and long to use in the weather api call. Changed ViewFactory to create a new forecast panel for each search to support other city searches after the first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WeatherPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WeatherPanelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/WindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Models/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/APIDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/APIDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Files/localdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Files/locations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Files/locations.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/FetchLatLongTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/FetchLatLongTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/SQLiteDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/SQLiteDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Views/ViewFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -397,13 +389,18 @@
       <option name="project" value="LOCAL" />
       <updated>1754514770732</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="After adjustments to DB and some tweaks, lat and long are now returned from SQLite db function. Additional files for debugging and changes will be cleaned up in next versions">
+      <option name="closed" value="true" />
+      <created>1755033786957</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1755033786957</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Stitched together the top menu, central panel and the blank bottom panel. Added temp values and logo. Ready for the individual day slides" />
-    <MESSAGE value="Created ForecastCells to contain and display weather forecasts" />
-    <MESSAGE value="Updating gitignore" />
     <MESSAGE value="Created APIDriver to handle fetch request to open-meteo. Starting with static test url to fill in UI and then will add in user defined search" />
     <MESSAGE value="Reworked somethings to get the structure better and the code cleaner. Getting ready to start testing methods of loading API data into weather cells" />
     <MESSAGE value="Refactored API driver - improved the flow and parsing methods to retrieve the values from API response" />
@@ -426,6 +423,9 @@
     <MESSAGE value="Finally found the solution for the loading screen. Reworked the flow of code to use threads now and unblocked the GUI. Loading works perfectly now." />
     <MESSAGE value="App is working with background threading. Autocomplete binding is added. Saving before adding SQLite server to store city/state/lat/long to remove lat&amp;long network call" />
     <MESSAGE value="Created a SQLite DB to hold all cities data. This DB look up will replace the network call to get lat and long. This update will halve the network calls to make it faster" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a SQLite DB to hold all cities data. This DB look up will replace the network call to get lat and long. This update will halve the network calls to make it faster" />
+    <MESSAGE value="After adjustments to DB and some tweaks, lat and long are now returned from SQLite db function" />
+    <MESSAGE value="After adjustments to DB and some tweaks, lat and long are now returned from SQLite db function. Additional files for debugging and changes will be cleaned up in next versions" />
+    <MESSAGE value="SQLite server properly fetching lat and long to use in the weather api call. Changed ViewFactory to create a new forecast panel for each search to support other city searches after the first" />
+    <option name="LAST_COMMIT_MESSAGE" value="SQLite server properly fetching lat and long to use in the weather api call. Changed ViewFactory to create a new forecast panel for each search to support other city searches after the first" />
   </component>
 </project>

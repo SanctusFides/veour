@@ -3,6 +3,7 @@ package io.sanctusfides.veour.Views;
 import io.sanctusfides.veour.Controllers.WindowController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -13,9 +14,13 @@ public class ViewFactory {
 
     private final ObjectProperty<ViewOptions> selectedView;
 
+    @FXML
     private HBox topMenu;
+    @FXML
     private HBox welcomeView;
+    @FXML
     private HBox forecastView;
+    @FXML
     private HBox loadingView;
 
 
@@ -44,7 +49,6 @@ public class ViewFactory {
     }
 
     public HBox getLoadingView() {
-        System.out.println("Loading Start");
         if (loadingView == null) {
             try {
                 loadingView = new FXMLLoader(getClass().getResource("/Fxml/LoadingPanel.fxml")).load();
@@ -52,20 +56,15 @@ public class ViewFactory {
                 e.printStackTrace();
             }
         }
-        System.out.println("Loading End");
         return loadingView;
     }
 
     public HBox getForecastView() {
-        System.out.println("Weather Start");
-        if (forecastView == null) {
-            try {
-                forecastView = new FXMLLoader(getClass().getResource("/Fxml/WeatherPanel.fxml")).load();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        try {
+            forecastView = new FXMLLoader(getClass().getResource("/Fxml/WeatherPanel.fxml")).load();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        System.out.println("Weather End");
         return forecastView;
     }
 
@@ -83,10 +82,6 @@ public class ViewFactory {
         stage.setTitle("Veour Forecast");
         stage.setResizable(false);
         stage.show();
-    }
-
-    public void closeStage(Stage stage) {
-        stage.close();
     }
 
     public ObjectProperty<ViewOptions> getSelectedView() {
