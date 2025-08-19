@@ -104,6 +104,15 @@ public final class Utility {
 
     public void loadCityList() {
         try {
+            List<String> cities = Files.readAllLines(Paths.get(Objects.requireNonNull(getClass().getResource("/Files/locations-ranked.txt")).toURI()));
+            Model.getInstance().setCities(cities);
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadDBList() {
+        try {
             List<String> cities = Files.readAllLines(Paths.get(Objects.requireNonNull(getClass().getResource("/Files/locations.txt")).toURI()));
             Model.getInstance().setCities(cities);
         } catch (IOException | URISyntaxException e) {

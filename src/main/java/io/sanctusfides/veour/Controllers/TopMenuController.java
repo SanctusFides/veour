@@ -6,8 +6,10 @@ import io.sanctusfides.veour.Views.ViewOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.controlsfx.control.SearchableComboBox;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
@@ -20,13 +22,15 @@ public class TopMenuController implements Initializable {
     @FXML
     public TextField search_fld;
     @FXML
+    public SearchableComboBox<String> combo_fld;
+    @FXML
     public Button search_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Utility loader = new Utility();
-        loader.loadCityList();
+
         TextFields.bindAutoCompletion(search_fld,Model.getInstance().getCities());
+        search_btn.disableProperty().bind(search_fld.textProperty().isEmpty());
     }
 
     public void loadWeather() throws Exception {

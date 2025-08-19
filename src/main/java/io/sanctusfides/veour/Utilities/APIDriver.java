@@ -31,7 +31,6 @@ public class APIDriver {
         setCityLatAndLong(userCityInput);
     }
 
-
     //  Set the lat and long variables in this class for the weather api to use when fetching the forecast
     private void setCityLatAndLong(String userInput) throws Exception {
         if (!userInput.isEmpty()) {

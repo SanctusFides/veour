@@ -8,10 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
+<?import org.controlsfx.control.SearchableComboBox?>
+
 <AnchorPane prefHeight="100.0" prefWidth="1260.0" styleClass="top_menu_container" stylesheets="@../Styles/TopMenu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.sanctusfides.veour.Controllers.TopMenuController">
    <HBox alignment="CENTER" layoutX="383.0" layoutY="1.0" prefHeight="100.0" prefWidth="495.0">
       <Label fx:id="search_lbl" text="Enter Your Location" textFill="WHITE" />
       <TextField fx:id="search_fld" prefHeight="25.0" prefWidth="223.0" />
+<!--      <SearchableComboBox fx:id="combo_fld" styleClass="combo-box" prefHeight="25.0" prefWidth="223.0" />-->
       <Button fx:id="search_btn" mnemonicParsing="false" onAction="#loadWeather" text="Search" />
    </HBox>
    <ImageView fitHeight="81.0" fitWidth="111.0" layoutX="93.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">

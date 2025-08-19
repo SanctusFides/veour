@@ -11,3 +11,9 @@
     -fx-font-family: "Calibri Light";
     -fx-font-fill: white;
 }
+
+.filter-icon {
+    -fx-width: 0;
+    -fx-height: 0;
+    -fx-visibility: hidden;
+}
