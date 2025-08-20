@@ -13,7 +13,9 @@ public class App extends Application {
         loader.loadCityList();
         Model.getInstance().getViewFactory().showWindow();
 //        loader.loadDBList();
+//        Model.getInstance().getSqLiteDriver().buildDB();
 //        Model.getInstance().getSqLiteDriver().readDB();
+//        Model.getInstance().getSqLiteDriver().deleteDB();
     }
 
     public static void main(String[] args) {

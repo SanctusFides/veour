@@ -7,14 +7,7 @@
     <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="SQLite server properly fetching lat and long to use in the weather api call. Changed ViewFactory to create a new forecast panel for each search to support other city searches after the first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Controllers/TopMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/APIDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/APIDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/SQLiteDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/SQLiteDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/Utility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Files/locations-ranked.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Files/locations-ranked.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Files/locations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Files/locations.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TopPanel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/TopMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/TopMenu.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +54,7 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2yurq3NXbsTrNz17LHLc18SVHSP" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -72,12 +65,15 @@
   &quot;keyToString&quot;: {
     &quot;Application.App.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/John1/Code/Veour/veour/src/main/resources/Fxml&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/John1/Code/Veour/veour/src/main/resources/Fxml&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -125,9 +121,11 @@
       </method>
     </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="io.sanctusfides.veour.App" />
       <module name="veour" />
+      <option name="PROGRAM_PARAMETERS" value="org.controlsfx.controls" />
       <option name="VM_PARAMETERS" value="--add-exports=javafx.base/com.sun.javafx.event=org.controlsfx.controls" />
       <extension name="coverage">
         <pattern>

@@ -103,10 +103,14 @@ public class SQLiteDriver {
             String query = "SELECT * FROM locations";
             preparedStatement = conn.prepareStatement(query);
             ResultSet results = preparedStatement.executeQuery();
+            if (!results.next()) {
+                System.out.println("failed to read DB");
+            }
             while (results.next()) {
                 System.out.println(results.getString("id"));
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
