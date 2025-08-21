@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="SQLite server properly fetching lat and long to use in the weather api call. Changed ViewFactory to create a new forecast panel for each search to support other city searches after the first">
+    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Save point for prior to compilation. Will branch off after this save">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/SQLiteDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/SQLiteDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Files/localdb.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Files/localdb.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +28,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -69,11 +76,11 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-compilation&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/John1/Code/Veour/veour/src/main/resources/Fxml&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -408,11 +415,18 @@
       <option name="project" value="LOCAL" />
       <updated>1755203805152</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Save point for prior to compilation. Will branch off after this save">
+      <option name="closed" value="true" />
+      <created>1755710485887</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1755710485887</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created APIDriver to handle fetch request to open-meteo. Starting with static test url to fill in UI and then will add in user defined search" />
     <MESSAGE value="Reworked somethings to get the structure better and the code cleaner. Getting ready to start testing methods of loading API data into weather cells" />
     <MESSAGE value="Refactored API driver - improved the flow and parsing methods to retrieve the values from API response" />
     <MESSAGE value="Everything is finally working great to load 7 days worth with values pulled from Forecast obj. Next up is putting additional days onto a rail for a weeks forecast" />
@@ -437,6 +451,7 @@
     <MESSAGE value="After adjustments to DB and some tweaks, lat and long are now returned from SQLite db function" />
     <MESSAGE value="After adjustments to DB and some tweaks, lat and long are now returned from SQLite db function. Additional files for debugging and changes will be cleaned up in next versions" />
     <MESSAGE value="SQLite server properly fetching lat and long to use in the weather api call. Changed ViewFactory to create a new forecast panel for each search to support other city searches after the first" />
-    <option name="LAST_COMMIT_MESSAGE" value="SQLite server properly fetching lat and long to use in the weather api call. Changed ViewFactory to create a new forecast panel for each search to support other city searches after the first" />
+    <MESSAGE value="Save point for prior to compilation. Will branch off after this save" />
+    <option name="LAST_COMMIT_MESSAGE" value="Save point for prior to compilation. Will branch off after this save" />
   </component>
 </project>

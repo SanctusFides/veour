@@ -16,7 +16,9 @@ public class App extends Application {
 //        Model.getInstance().getSqLiteDriver().buildDB();
 //        Model.getInstance().getSqLiteDriver().readDB();
 //        Model.getInstance().getSqLiteDriver().deleteDB();
+//        System.exit(0);
     }
+
 
     public static void main(String[] args) {
         launch();
