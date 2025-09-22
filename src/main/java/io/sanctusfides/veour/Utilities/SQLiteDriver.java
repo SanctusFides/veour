@@ -8,11 +8,14 @@ public class SQLiteDriver {
     public String[] getLatAndLong(String city, String state) {
         String[] arr = new String[2];
         String query = "SELECT lat, long FROM locations WHERE city = ? AND state = ?";
-        String url = "jdbc:sqlite:" + getClass().getResource("/Files/localdb.db");
+        String dir = System.getProperty("user.dir").replace("\\","/").replace("out/artifacts/veour_jar","");
+
+        String url = "jdbc:sqlite:" + dir + "src/main/resources/Files/localdb.db";
 
         try (Connection conn = DriverManager.getConnection(url)) {
             conn.setAutoCommit(false);
             try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+            System.out.println("Worked!!");
                 preparedStatement.setString(1, city);
                 preparedStatement.setString(2, state);
                 try (ResultSet results = preparedStatement.executeQuery()) {

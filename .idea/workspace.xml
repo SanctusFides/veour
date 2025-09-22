@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="veour:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Save point for prior to compilation. Will branch off after this save">
+    <list default="true" id="712f7207-816a-493e-9eaa-36703b3e3c46" name="Changes" comment="Populated the DB file properly now. Wasn't saving data outside of memory even with commit calls. Making a git save point with the good DB file">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Launcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/SQLiteDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/SQLiteDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Files/localdb.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Files/localdb.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/sanctusfides/veour/Utilities/Utility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,23 +75,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature-compilation&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/John1/Code/Veour/veour/src/main/resources/Fxml&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "Application.Launcher.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "feature-compilation",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/John1/Code/Veour/veour/out/artifacts/veour_jar",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.37413195",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\John1\Code\Veour\veour\out\artifacts\veour_jar" />
       <recent name="C:\Users\John1\Code\Veour\veour\src\main\resources\Fxml" />
       <recent name="C:\Users\John1\Code\Veour\veour\src\main\resources\Images\Arrows" />
       <recent name="C:\Users\John1\Code\Veour\veour\src\main\resources\Images" />
@@ -127,10 +143,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="io.sanctusfides.veour.App" />
+      <option name="MAIN_CLASS_NAME" value="io.sanctusfides.veour.Launcher" />
       <module name="veour" />
       <option name="PROGRAM_PARAMETERS" value="org.controlsfx.controls" />
       <option name="VM_PARAMETERS" value="--add-exports=javafx.base/com.sun.javafx.event=org.controlsfx.controls" />
@@ -146,7 +162,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
+        <item itemvalue="Application.Launcher" />
       </list>
     </recent_temporary>
   </component>
@@ -423,11 +439,18 @@
       <option name="project" value="LOCAL" />
       <updated>1755710485887</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Populated the DB file properly now. Wasn't saving data outside of memory even with commit calls. Making a git save point with the good DB file">
+      <option name="closed" value="true" />
+      <created>1755806854929</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1755806854929</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reworked somethings to get the structure better and the code cleaner. Getting ready to start testing methods of loading API data into weather cells" />
     <MESSAGE value="Refactored API driver - improved the flow and parsing methods to retrieve the values from API response" />
     <MESSAGE value="Everything is finally working great to load 7 days worth with values pulled from Forecast obj. Next up is putting additional days onto a rail for a weeks forecast" />
     <MESSAGE value="Added the concept of the weekday forecast to the model to decouple code better. Reworking to change from loading static test to being driven by UI interactions" />
@@ -452,6 +475,7 @@
     <MESSAGE value="After adjustments to DB and some tweaks, lat and long are now returned from SQLite db function. Additional files for debugging and changes will be cleaned up in next versions" />
     <MESSAGE value="SQLite server properly fetching lat and long to use in the weather api call. Changed ViewFactory to create a new forecast panel for each search to support other city searches after the first" />
     <MESSAGE value="Save point for prior to compilation. Will branch off after this save" />
-    <option name="LAST_COMMIT_MESSAGE" value="Save point for prior to compilation. Will branch off after this save" />
+    <MESSAGE value="Populated the DB file properly now. Wasn't saving data outside of memory even with commit calls. Making a git save point with the good DB file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Populated the DB file properly now. Wasn't saving data outside of memory even with commit calls. Making a git save point with the good DB file" />
   </component>
 </project>

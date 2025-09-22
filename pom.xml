@@ -34,6 +34,11 @@
                                 <phase>package</phase>
                             </execution>
                         </executions>
+                        <configuration>
+                            <imageName>veour</imageName>
+                            <mainClass>io.sanctusfides.veour.App</mainClass>
+                            <verbose>true</verbose>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -99,6 +104,22 @@
         </repository>
     </repositories>
 
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>graalvm-native-build-tools-snapshots</id>
+            <name>GraalVM native-build-tools Snapshots</name>
+            <url>https://raw.githubusercontent.com/graalvm/native-build-tools/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+
     <build>
         <plugins>
             <plugin>
@@ -107,10 +128,9 @@
                 <version>0.0.8</version>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>io.sanctusfides.veour/io.sanctusfides.veour.App</mainClass>
+                            <mainClass>io.sanctusfides.veour.App</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
@@ -140,7 +160,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>io.sanctusfides.veour</mainClass>
+                            <mainClass>io.sanctusfides.veour.App</mainClass>
                             <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>

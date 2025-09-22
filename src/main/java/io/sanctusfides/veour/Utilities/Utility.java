@@ -3,10 +3,13 @@ package io.sanctusfides.veour.Utilities;
 import io.sanctusfides.veour.Models.Model;
 import javafx.scene.image.Image;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,6 +54,7 @@ public final class Utility {
         } else {
             image = new Image(Utility.class.getResource("/Images/error.png").toString());
         }
+//        TODO figure out for sure which of these is actually needed
 //        if (code < 20) {
 //            image = new Image(Utility.class.getResource("/Images/Arrows/north.png").toString());
 //        } else if (code < 70) {
@@ -103,12 +107,20 @@ public final class Utility {
     }
 
     public void loadCityList() {
-        try {
-            List<String> cities = Files.readAllLines(Paths.get(Objects.requireNonNull(getClass().getResource("/Files/locations-ranked.txt")).toURI()));
-            Model.getInstance().setCities(cities);
-        } catch (IOException | URISyntaxException e) {
-            e.printStackTrace();
+        List<String> cities = new ArrayList<>();
+        try (InputStream input = getClass().getResourceAsStream("/Files/locations-ranked.txt")) {
+            assert input != null;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+
+            String city;
+            while ((city = reader.readLine()) != null) {
+                cities.add(city);
+            }
+            reader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        Model.getInstance().setCities(cities);
     }
 
     public void loadDBList() {
