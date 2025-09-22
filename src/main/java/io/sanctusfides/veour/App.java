@@ -16,6 +16,7 @@ public class App extends Application {
         loader.loadCityList();
         Model.getInstance().getViewFactory().showWindow();
 
+//        TODO: comment this out once exe is working
 ////        loader.loadDBList();
 ////        Model.getInstance().getSqLiteDriver().buildDB();
 ////        Model.getInstance().getSqLiteDriver().readDB();

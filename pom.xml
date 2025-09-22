@@ -6,7 +6,7 @@
 
     <groupId>io.sanctusfides</groupId>
     <artifactId>veour</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0</version>
     <name>veour</name>
 
     <properties>
@@ -36,7 +36,7 @@
                         </executions>
                         <configuration>
                             <imageName>veour</imageName>
-                            <mainClass>io.sanctusfides.veour.App</mainClass>
+                            <mainClass>io.sanctusfides.veour.Launcher</mainClass>
                             <verbose>true</verbose>
                         </configuration>
                     </plugin>
@@ -94,9 +94,9 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.50.3.0</version>
         </dependency>
-
-
     </dependencies>
+
+
     <repositories>
         <repository>
             <id>jitpack.io</id>
@@ -130,7 +130,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>io.sanctusfides.veour.App</mainClass>
+                            <mainClass>io.sanctusfides.veour.Launcher</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
@@ -160,14 +160,13 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>io.sanctusfides.veour.App</mainClass>
+                            <mainClass>io.sanctusfides.veour.Launcher</mainClass>
                             <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
+
         </plugins>
-
-
     </build>
 </project>
