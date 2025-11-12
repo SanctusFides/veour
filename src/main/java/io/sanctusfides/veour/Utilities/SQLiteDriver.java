@@ -15,7 +15,6 @@ public class SQLiteDriver {
         try (Connection conn = DriverManager.getConnection(url)) {
             conn.setAutoCommit(false);
             try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-            System.out.println("Worked!!");
                 preparedStatement.setString(1, city);
                 preparedStatement.setString(2, state);
                 try (ResultSet results = preparedStatement.executeQuery()) {

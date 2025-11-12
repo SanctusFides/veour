@@ -59,7 +59,7 @@ public class APIDriver {
     }
 
 //  Takes the JSON and a string and retrieves the requested parent section from the JSON - needed for nested sections
-    public JsonNode mapObjectToJsonNode(Object weather, String jsonParent) throws JsonProcessingException {
+    private JsonNode mapObjectToJsonNode(Object weather, String jsonParent) throws JsonProcessingException {
         JsonNode node = mapper.readTree(String.valueOf(weather));
         return node.get(jsonParent);
     }
@@ -89,7 +89,7 @@ public class APIDriver {
     }
 
 //  Handles the actual building of forecast - adhering to the single responsibility principal
-    public Forecast[] buildWeekForecast(JsonNode currentNode, JsonNode timeNode, JsonNode avgTempNode,
+    private Forecast[] buildWeekForecast(JsonNode currentNode, JsonNode timeNode, JsonNode avgTempNode,
                                          JsonNode maxTempNode, JsonNode minTempNode, JsonNode feelsLikeTempNode,
                                          JsonNode humidtyNode, JsonNode precipNode, JsonNode weathCodeNode,
                                          JsonNode windDirection, JsonNode windSpeed) {

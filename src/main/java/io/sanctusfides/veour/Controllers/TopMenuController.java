@@ -1,12 +1,10 @@
 package io.sanctusfides.veour.Controllers;
 
 import io.sanctusfides.veour.Models.Model;
-import io.sanctusfides.veour.Utilities.Utility;
 import io.sanctusfides.veour.Views.ViewOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.SearchableComboBox;
